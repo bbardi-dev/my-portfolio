@@ -1,0 +1,18 @@
+export const images = [
+  "html5",
+  "css3",
+  "sass",
+  "figma",
+  "javascript",
+  "typescript",
+  "git",
+  "github",
+  "react",
+  "nextjs",
+  "redux",
+  "tailwindcss",
+  "postgresql",
+  "nodejs",
+  "express",
+  "mongodb",
+];
