@@ -1,7 +1,6 @@
-import type { NextPage } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import styles from "../styles/pages/projects.module.scss";
+import styles from "../styles/sections/projects.module.scss";
 import placeholder from "../public/placeholder.jpg";
 
 const ProjectCard = () => {
@@ -43,7 +42,7 @@ const ProjectCard = () => {
   );
 };
 
-const projects: NextPage = () => {
+const Projects = () => {
   const projects = [1, 2, 3, 4];
 
   return (
@@ -58,4 +57,4 @@ const projects: NextPage = () => {
   );
 };
 
-export default projects;
+export default Projects;

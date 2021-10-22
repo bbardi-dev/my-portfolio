@@ -1,9 +1,8 @@
-import type { NextPage } from "next";
 import Image from "next/image";
-import styles from "../styles/pages/about.module.scss";
+import styles from "../styles/sections/about.module.scss";
 import { images } from "../constants";
 
-const about: NextPage = () => {
+const About = () => {
   return (
     <div className={styles.main}>
       <div className={styles.text_content}>
@@ -26,6 +25,7 @@ const about: NextPage = () => {
           eveniet.
         </p>
       </div>
+
       <div className={styles.images}>
         {images.map((val, i) => (
           <div className={styles.image} key={i}>
@@ -41,4 +41,4 @@ const about: NextPage = () => {
   );
 };
 
-export default about;
+export default About;
