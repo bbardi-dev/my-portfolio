@@ -1,7 +1,5 @@
 import type { NextPage } from "next";
-import Image from "next/image";
 import styles from "../styles/pages/about.module.scss";
-import { images } from "../constants";
 
 const about: NextPage = () => {
   return (
@@ -13,29 +11,29 @@ const about: NextPage = () => {
         <p>
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Autem
           dolorem ab veniam quasi et voluptatibus tempora nemo. Debitis, libero
-          eveniet.
+          eveniet. Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+          Autem dolorem ab veniam quasi et voluptatibus tempora nemo. Debitis,
+          libero eveniet.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae, quod
+          ex harum atque sapiente incidunt reiciendis corrupti quas. Provident,
+          eligendi. Cumque illo magnam sequi ab velit libero atque quidem, et,
+          aliquid, voluptatum quisquam accusantium! Laudantium unde, provident
+          ullam soluta incidunt quasi similique. Reiciendis laboriosam facilis
+          esse! Et cupiditate saepe incidunt?
         </p>
         <p>
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Autem
           dolorem ab veniam quasi et voluptatibus tempora nemo. Debitis, libero
           eveniet.
         </p>
-        <p>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Autem
-          dolorem ab veniam quasi et voluptatibus tempora nemo. Debitis, libero
-          eveniet.
-        </p>
-      </div>
-      <div className={styles.images}>
-        {images.map((val, i) => (
-          <div className={styles.image} key={i}>
-            <Image
-              src={`/dev-icons/${val}.svg`}
-              layout='fill'
-              objectFit='fill'
-            />
-          </div>
-        ))}
+        <ul>
+          <li>React</li>
+          <li>Javascript</li>
+          <li>Typescript</li>
+          <li>Yo Mama</li>
+        </ul>
       </div>
     </div>
   );
