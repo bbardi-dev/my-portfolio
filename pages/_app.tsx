@@ -2,28 +2,27 @@ import "../styles/normalize.scss";
 import "../styles/globals.scss";
 import type { AppProps } from "next/app";
 import { AnimatePresence, motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import Loader from "../components/Loader";
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    loading
+      ? document.querySelector("body")?.classList.add("loading")
+      : document.querySelector("body")?.classList.remove("loading");
+  }, [loading]);
+
   return (
     <AnimatePresence exitBeforeEnter>
-      <div className='animation-helper'>
-        <motion.div animate={{ x: [0, 100, 0] }} className='transition-1' />
-        <motion.div
-          initial={{ scaleY: 0 }}
-          animate={{ scaleY: 1 }}
-          exit={{ display: "none" }}
-          className='transition-2'
-        />
-        <motion.div
-          initial={{ scaleY: 0 }}
-          animate={{ scaleY: 1 }}
-          exit={{ display: "none" }}
-          className='transition-3'
-        />
-        <div className='container'>
+      {loading ? (
+        <Loader setLoading={setLoading} />
+      ) : (
+        <motion.div className='container'>
           <Component {...pageProps} />
-        </div>
-      </div>
+        </motion.div>
+      )}
     </AnimatePresence>
   );
 }

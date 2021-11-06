@@ -63,19 +63,23 @@ p {
   margin: 0 auto;
 }
 
-.animation-helper {
-  position: relative;
+body.loading {
+  overflow: hidden;
+  height: 100vh;
 }
 
-.transition-1 {
-  background-color: $light-blue;
-  height: 100vh;
-}
-.transition-2 {
-  background-color: $white;
-  height: 100vh;
-}
-.transition-3 {
-  background-color: $apricot;
-  height: 100vh;
+.loader {
+  position: relative;
+  .transition-1 {
+    background-color: $light-blue;
+    height: 100vh;
+  }
+  .transition-2 {
+    background-color: $white;
+    height: 100vh;
+  }
+  .transition-3 {
+    background-color: $apricot;
+    height: 100vh;
+  }
 }
