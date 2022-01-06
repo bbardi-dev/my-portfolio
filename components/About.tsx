@@ -4,20 +4,18 @@ import { images } from "../constants";
 
 const About = () => {
   return (
-    <div className={styles.main}>
+    <div className={styles.main} id='about'>
+      <h2 className='line_separate'>About me</h2>
       <div className={styles.text_content}>
-        <h1>About me</h1>
-
         <p>This is a description about me.</p>
         <p>
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Autem
           dolorem ab veniam quasi et voluptatibus tempora nemo. Debitis, libero
-          eveniet.
-        </p>
-        <p>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Autem
-          dolorem ab veniam quasi et voluptatibus tempora nemo. Debitis, libero
-          eveniet.
+          eveniet. Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+          Autem dolorem ab veniam quasi et voluptatibus tempora nemo. Debitis,
+          libero eveniet. Lorem ipsum, dolor sit amet consectetur adipisicing
+          elit. Autem dolorem ab veniam quasi et voluptatibus tempora nemo.
+          Debitis, libero eveniet.
         </p>
         <p>
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Autem
@@ -26,7 +24,7 @@ const About = () => {
         </p>
       </div>
 
-      <div className={styles.images}>
+      {/* <div className={styles.images}>
         {images.map((val, i) => (
           <div className={styles.image} key={i}>
             <Image
@@ -36,7 +34,7 @@ const About = () => {
             />
           </div>
         ))}
-      </div>
+      </div> */}
     </div>
   );
 };

@@ -3,17 +3,22 @@ import Image from "next/image";
 import styles from "../styles/sections/projects.module.scss";
 import placeholder from "../public/placeholder.jpg";
 
-const ProjectCard = () => {
+const ProjectCard = ({ index }: { index: number }) => {
   console.log(placeholder);
 
   return (
-    <div className={styles.project_card}>
+    <div
+      className={`${styles.project_card} ${
+        index % 2 === 0 ? styles.row_reverse : ""
+      }`}
+    >
       <div className={styles.image}>
         <Image
           src={placeholder}
           alt='Project Image'
           layout='fill'
           objectFit='cover'
+          id={styles.nx_img}
         />
       </div>
       <div className={styles.project_content}>
@@ -21,7 +26,10 @@ const ProjectCard = () => {
         <p>
           Project description. Lorem ipsum dolor sit, amet consectetur
           adipisicing elit. Amet veniam reiciendis quibusdam exercitationem
-          error nam suscipit culpa quia laudantium.
+          error nam suscipit culpa quia laudantium. Project description. Lorem
+          ipsum dolor sit, amet consectetur adipisicing elit. Amet veniam
+          reiciendis quibusdam exercitationem error nam suscipit culpa quia
+          laudantium.
         </p>
         <div className={styles.techstack_items}>
           <span>Tech Stack Item</span>
@@ -46,11 +54,11 @@ const Projects = () => {
   const projects = [1, 2, 3, 4];
 
   return (
-    <div className={styles.main}>
-      <h1>My Projects</h1>
+    <div className={styles.main} id='projects'>
+      <h2 className='line_separate'>My Projects</h2>
       <div className={styles.projects_section}>
         {projects.map((_, i) => (
-          <ProjectCard key={i} />
+          <ProjectCard key={i} index={i} />
         ))}
       </div>
     </div>

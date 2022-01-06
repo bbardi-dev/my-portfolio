@@ -2,36 +2,35 @@
 @import "../variables.scss";
 
 .main {
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  @include media(">=desktop") {
-  }
   .text_content {
-    @include media(">=desktop") {
+    p {
+      max-width: 64ch;
     }
   }
 
-  .images {
-    display: flex;
-    align-items: row;
-    align-items: center;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    gap: 3rem;
-    @include media(">tablet") {
-    }
-    .image {
-      position: relative;
-      width: 48px;
-      height: 48px;
-      flex: 1 1 5em;
-      @include media(">tablet") {
-        width: 64px;
-        height: 64px;
-      }
-    }
-  }
+  // .images {
+  //   display: flex;
+  //   align-items: row;
+  //   align-items: center;
+  //   flex-wrap: wrap;
+  //   justify-content: space-evenly;
+  //   gap: 3rem;
+  //   @include media(">tablet") {
+  //   }
+  //   .image {
+  //     position: relative;
+  //     width: 48px;
+  //     height: 48px;
+  //     flex: 1 1 5em;
+  //     @include media(">tablet") {
+  //       width: 64px;
+  //       height: 64px;
+  //     }
+  //   }
+  // }
 }

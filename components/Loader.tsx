@@ -9,7 +9,7 @@ const Loader = ({
   const container = {
     show: {
       transition: {
-        staggerChildren: 0.25,
+        staggerChildren: 0.3,
       },
     },
   };
@@ -17,16 +17,11 @@ const Loader = ({
   const item = {
     hidden: { x: "-100vw" },
     show: {
+      opacity: 1,
       x: 0,
       transition: {
-        duration: 0.4,
-      },
-    },
-    exit: {
-      x: "-100vw",
-      transition: {
-        ease: "easeInOut",
-        duration: 0.3,
+        ease: [0.6, 0.01, -0.05, 0.95],
+        duration: 0.5,
       },
     },
   };
@@ -53,7 +48,6 @@ const Loader = ({
       variants={container}
       initial='hidden'
       animate='show'
-      exit='exit'
       onAnimationComplete={() => setLoading(false)}
     >
       <motion.div variants={item} className='transition-1' />

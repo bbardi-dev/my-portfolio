@@ -3,15 +3,19 @@ import styles from "../styles/sections/hero.module.scss";
 
 const Hero = () => {
   return (
-    <div className={styles.main}>
+    <div className={styles.main} id='hero'>
       <h1>Welcome, my name is Balázs</h1>
-      <h2>I'm a Software Engineer</h2>
+      <p>
+        I'm a Software Engineer. Lorem ipsum dolor sit amet consectetur
+        adipisicing elit. A natus asperiores, veritatis facere ducimus
+        cupiditate est laboriosam atque perferendis nostrum.
+      </p>
       <div className={styles.links}>
-        <Link href='/projects' passHref>
+        <Link href='#projects' passHref>
           <a>See my work</a>
         </Link>
-        <Link href='/about' passHref>
-          <a>About me</a>
+        <Link href='#contact' passHref>
+          <a>Contact me</a>
         </Link>
       </div>
     </div>
