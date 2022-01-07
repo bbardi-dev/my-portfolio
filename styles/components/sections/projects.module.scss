@@ -1,5 +1,5 @@
-@import "../breakpoints.scss";
-@import "../variables.scss";
+@import "../../breakpoints.scss";
+@import "../../variables.scss";
 
 .main {
   display: flex;
@@ -34,7 +34,7 @@
       @include media(">tablet") {
         display: flex;
       }
-      background-color: $apricot;
+      background-color: $light-yellow;
       min-width: 320px;
       min-height: 360px;
       max-width: 100%;

@@ -1,5 +1,5 @@
-@import "../breakpoints.scss";
-@import "../variables.scss";
+@import "../../breakpoints.scss";
+@import "../../variables.scss";
 
 .contact {
   display: flex;
@@ -15,7 +15,7 @@
     width: 50%;
     font-size: 2rem;
     letter-spacing: 0.05rem;
-    background-color: $slate;
+    background-color: $light-blue;
     form {
       display: flex;
       flex-direction: column;
@@ -42,7 +42,7 @@
       }
       button[type="submit"] {
         width: 100%;
-        background-color: $apricot;
+        background-color: $light-yellow;
         color: $white;
         font-weight: 700;
         letter-spacing: 0.2rem;

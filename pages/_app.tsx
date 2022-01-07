@@ -5,7 +5,6 @@ import { AnimatePresence, AnimateSharedLayout, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import Loader from "../components/Loader";
 import Menu from "../components/Menu";
-import "../styles/menu.scss";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [loading, setLoading] = useState(true);
@@ -18,7 +17,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <AnimatePresence exitBeforeEnter>
-      <div className='animation-helper'>
+      <div style={{ position: "relative" }}>
         {loading ? (
           <Loader setLoading={setLoading} />
         ) : (
@@ -33,7 +32,7 @@ function MyApp({ Component, pageProps }: AppProps) {
             }}
             style={{ position: "relative" }}
           >
-            <Menu />
+            {/* <Menu /> */}
             <Component {...pageProps} />
           </motion.div>
         )}

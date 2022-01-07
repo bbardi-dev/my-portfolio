@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Dispatch, SetStateAction } from "react";
+import styles from "../styles/components/loader.module.scss";
 
 const Loader = ({
   setLoading,
@@ -44,15 +45,15 @@ const Loader = ({
 
   return (
     <motion.div
-      className='loader'
+      className={styles.loader}
       variants={container}
       initial='hidden'
       animate='show'
       onAnimationComplete={() => setLoading(false)}
     >
-      <motion.div variants={item} className='transition-1' />
-      <motion.div variants={item2} className='transition-2' />
-      <motion.div variants={item3} className='transition-3' />
+      <motion.div variants={item} className={styles.transition_1} />
+      <motion.div variants={item2} className={styles.transition_2} />
+      <motion.div variants={item3} className={styles.transition_3} />
     </motion.div>
   );
 };

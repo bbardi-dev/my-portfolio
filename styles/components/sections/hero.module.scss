@@ -1,0 +1,39 @@
+@import "../../breakpoints.scss";
+@import "../../variables.scss";
+
+.main {
+  display: flex;
+  flex-wrap: wrap;
+  @include media(">desktop") {
+    flex-wrap: nowrap;
+  }
+
+  h1 {
+    font-size: 72px;
+    font-weight: 600;
+  }
+
+  .links {
+    a {
+      font-size: 2rem;
+      font-weight: 600;
+      letter-spacing: 0.05rem;
+      border-radius: 3px;
+      width: 200px;
+      padding: 1rem 2rem;
+      margin: 1rem;
+      background: radial-gradient(circle closest-side, $white 100%, #0000)
+        center;
+      background-size: 0 0;
+      background-repeat: no-repeat;
+      transition: 0.5s;
+      background-color: $yellow;
+      color: $dark-blue;
+
+      &:hover {
+        background-size: 300px 300px;
+        color: $dark-blue;
+      }
+    }
+  }
+}

@@ -1,3 +1,5 @@
+@import "../variables.scss";
+
 .hamburger {
   position: absolute;
   top: 0.5%;
@@ -10,7 +12,7 @@
   .line {
     width: 36px;
     height: 2px;
-    background-color: #ecf0f1;
+    background-color: $white;
     display: block;
     margin: 8px auto;
     -webkit-transition: all 0.3s ease-in-out;

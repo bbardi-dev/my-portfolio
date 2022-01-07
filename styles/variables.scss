@@ -1,9 +1,35 @@
 $white: #fff;
-$slate: #849bb3;
-$brown: #b39b72;
-$cream: #fff0d6;
-$light-blue: #d6eaff;
-$dark-blue: #003366;
-$apricot: #e8b661;
-// $apricot: #ffbbaa;
+$light-blue: #d8ebff;
+$dark-blue: #051729;
+$light-yellow: #fff0a3;
+$yellow: #ffe76a;
 $black: #000000;
+
+@font-face {
+  font-family: "Aileron";
+  src: url("../public/fonts/Aileron-Light-webfont.woff") format("woff");
+
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Aileron";
+  src: url("../public/fonts/Aileron-Regular-webfont.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Aileron";
+  src: url("../public/fonts/Aileron-SemiBold-webfont.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Aileron";
+  src: url("../public/fonts/Aileron-Bold-webfont.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+}

@@ -1,5 +1,5 @@
 import { SubmitHandler, useForm } from "react-hook-form";
-import styles from "../styles/sections/contact.module.scss";
+import styles from "../../styles/components/sections/contact.module.scss";
 
 interface Inputs {
   name: string;

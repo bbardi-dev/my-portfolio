@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
-import styles from "../styles/sections/projects.module.scss";
-import placeholder from "../public/placeholder.jpg";
+import styles from "../../styles/components/sections/projects.module.scss";
+import placeholder from "../../public/placeholder.jpg";
 
 const ProjectCard = ({ index }: { index: number }) => {
   console.log(placeholder);

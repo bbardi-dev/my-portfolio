@@ -1,6 +1,6 @@
 import Image from "next/image";
-import styles from "../styles/sections/about.module.scss";
-import { images } from "../constants";
+import styles from "../../styles/components/sections/about.module.scss";
+import { images } from "../../constants";
 
 const About = () => {
   return (
