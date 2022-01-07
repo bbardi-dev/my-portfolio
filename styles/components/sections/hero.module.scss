@@ -4,36 +4,61 @@
 .main {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
+  margin-top: 10rem;
   @include media(">desktop") {
     flex-wrap: nowrap;
   }
 
-  h1 {
-    font-size: 72px;
-    font-weight: 600;
-  }
-
-  .links {
-    a {
-      font-size: 2rem;
-      font-weight: 600;
-      letter-spacing: 0.05rem;
-      border-radius: 3px;
-      width: 200px;
-      padding: 1rem 2rem;
-      margin: 1rem;
-      background: radial-gradient(circle closest-side, $white 100%, #0000)
-        center;
-      background-size: 0 0;
-      background-repeat: no-repeat;
-      transition: 0.5s;
-      background-color: $yellow;
-      color: $dark-blue;
-
-      &:hover {
-        background-size: 300px 300px;
-        color: $dark-blue;
+  .text_content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    h1 {
+      font-size: 64px;
+      @include media(">desktop") {
+        font-size: 72px;
       }
+      font-weight: 600;
+      margin: 0 auto;
+    }
+
+    p {
+      font-size: 20px;
+    }
+
+    .links {
+      display: flex;
+      a {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        font-size: 2rem;
+        font-weight: 600;
+        letter-spacing: 0.05rem;
+        border-radius: 3px;
+        width: 18rem;
+        padding: 0.75rem 1.5rem;
+        margin-right: 1rem;
+        background: radial-gradient(circle closest-side, $white 100%, #0000)
+          center;
+        background-size: 0 0;
+        background-repeat: no-repeat;
+        transition: 0.5s;
+        background-color: $yellow;
+        color: $dark-blue;
+
+        &:hover {
+          background-size: 300px 300px;
+          color: $dark-blue;
+        }
+      }
+    }
+  }
+  .coding {
+    display: none;
+    @include media(">=desktop") {
+      display: block;
     }
   }
 }

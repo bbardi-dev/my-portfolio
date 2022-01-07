@@ -1,16 +1,61 @@
 @import "../variables.scss";
+@import "../breakpoints.scss";
+
+.header {
+  display: none;
+  @include media(">=desktop") {
+    display: block;
+  }
+  padding: 1rem 0;
+  .logo {
+    font-size: 32px;
+    font-weight: 600;
+    color: $light-blue;
+  }
+  .navlinks {
+    display: flex;
+    gap: 5rem;
+    align-items: center;
+    a {
+      font-size: 24px;
+      font-weight: 600;
+    }
+    .hirebtn {
+      font-weight: 700;
+
+      padding: 0.5rem 2.5rem;
+
+      border-radius: 3px;
+      background: radial-gradient(circle closest-side, $white 100%, #0000)
+        center;
+      background-size: 0 0;
+      background-repeat: no-repeat;
+      transition: 0.5s;
+      background-color: $yellow;
+      color: $dark-blue;
+
+      &:hover {
+        background-size: 300px 300px;
+        color: $dark-blue;
+      }
+    }
+  }
+}
 
 .hamburger {
+  @include media(">=desktop") {
+    display: none;
+  }
   position: absolute;
-  top: 0.5%;
-  right: 1.5%;
+  top: 0.25%;
+  right: 4%;
   z-index: 21;
   opacity: 0.84;
   &:hover {
     cursor: pointer;
   }
   .line {
-    width: 36px;
+    width: 32px;
     height: 2px;
     background-color: $white;
     display: block;

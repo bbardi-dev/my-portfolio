@@ -32,7 +32,7 @@ function MyApp({ Component, pageProps }: AppProps) {
             }}
             style={{ position: "relative" }}
           >
-            {/* <Menu /> */}
+            <Menu />
             <Component {...pageProps} />
           </motion.div>
         )}
