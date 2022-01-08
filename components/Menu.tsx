@@ -7,19 +7,27 @@ export default function Menu() {
   return (
     <>
       <header className={styles.header}>
-        <div className='container'>
+        <nav className='container'>
           <a href='#' className={styles.logo}>
             Balazs.bardi
           </a>
-          <div className={styles.navlinks}>
-            <a href='#'>Home</a>
-            <a href='#about'>About</a>
-            <a href='#projects'>Projects</a>
-            <a href='#contact' className={styles.hirebtn}>
-              Hire me
-            </a>
-          </div>
-        </div>
+          <ul className={`${styles.navlinks} ${!active ? styles.closed : ""}`}>
+            <li>
+              <a href='#'>Home</a>
+            </li>
+            <li>
+              <a href='#about'>About</a>
+            </li>
+            <li>
+              <a href='#projects'>Projects</a>
+            </li>
+            <li>
+              <a href='#contact' className={styles.hirebtn}>
+                Hire me
+              </a>
+            </li>
+          </ul>
+        </nav>
       </header>
 
       <div

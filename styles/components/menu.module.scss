@@ -2,42 +2,76 @@
 @import "../breakpoints.scss";
 
 .header {
-  display: none;
-  @include media(">=desktop") {
-    display: block;
-  }
   padding: 1rem 0;
+
   .logo {
-    font-size: 32px;
+    font-size: 30px;
     font-weight: 600;
     color: $light-blue;
   }
   .navlinks {
+    list-style: none;
     display: flex;
-    gap: 5rem;
-    align-items: center;
+    z-index: 20;
     a {
       font-size: 24px;
       font-weight: 600;
     }
-    .hirebtn {
-      font-weight: 700;
-
-      padding: 0.5rem 2.5rem;
-
-      border-radius: 3px;
-      background: radial-gradient(circle closest-side, $white 100%, #0000)
-        center;
-      background-size: 0 0;
-      background-repeat: no-repeat;
-      transition: 0.5s;
-      background-color: $yellow;
-      color: $dark-blue;
-
-      &:hover {
-        background-size: 300px 300px;
-        color: $dark-blue;
+    @include media("<=desktop") {
+      position: fixed;
+      top: -5%;
+      right: 0;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      width: 75%;
+      gap: 3rem;
+      background: rgba(0, 0, 0, 0.96);
+      @supports (backdrop-filter: blur(3rem)) {
+        background: rgba(0, 0, 0, 0.72);
+        backdrop-filter: blur(3rem);
       }
+      height: 105vh;
+      padding: min(30vh, 10rem) 0;
+      li {
+        width: 100%;
+        padding: 1.5rem 0;
+        &:hover,
+        &:active {
+          background: rgba(255, 255, 255, 0.72);
+        }
+      }
+    }
+
+    @include media(">=desktop") {
+      gap: 5rem;
+      align-items: center;
+
+      .hirebtn {
+        font-weight: 700;
+
+        padding: 0.5rem 2.5rem;
+
+        border-radius: 3px;
+        background: radial-gradient(circle closest-side, $white 100%, #0000)
+          center;
+        background-size: 0 0;
+        background-repeat: no-repeat;
+        transition: 0.5s;
+        background-color: $yellow;
+        color: $dark-blue;
+
+        &:hover {
+          background-size: 300px 300px;
+          color: $dark-blue;
+        }
+      }
+    }
+  }
+  .closed {
+    @include media("<=desktop") {
+      display: none;
     }
   }
 }
@@ -46,11 +80,10 @@
   @include media(">=desktop") {
     display: none;
   }
-  position: absolute;
-  top: 0.25%;
+  position: fixed;
+  top: 1%;
   right: 4%;
   z-index: 21;
-  opacity: 0.84;
   &:hover {
     cursor: pointer;
   }
