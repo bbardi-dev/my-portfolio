@@ -13,16 +13,26 @@ export default function Menu() {
           </a>
           <ul className={`${styles.navlinks} ${!active ? styles.closed : ""}`}>
             <li>
-              <a href='#'>Home</a>
+              <a onClick={() => setActive(false)} href='#'>
+                Home
+              </a>
             </li>
             <li>
-              <a href='#about'>About</a>
+              <a onClick={() => setActive(false)} href='#about'>
+                About
+              </a>
             </li>
             <li>
-              <a href='#projects'>Projects</a>
+              <a onClick={() => setActive(false)} href='#projects'>
+                Projects
+              </a>
             </li>
             <li>
-              <a href='#contact' className={styles.hirebtn}>
+              <a
+                onClick={() => setActive(false)}
+                href='#contact'
+                className={styles.hirebtn}
+              >
                 Hire me
               </a>
             </li>

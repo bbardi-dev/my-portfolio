@@ -11,13 +11,13 @@ const Hero = () => {
         <div className={styles.links}>
           <Link href='#projects' passHref>
             <a>
-              <Image src='/icons/contact_me.svg' height={30} width={30} />
+              <Image src='/icons/see_m_w.svg' height={30} width={30} />
               <span>See my work</span>
             </a>
           </Link>
           <Link href='#contact' passHref>
             <a>
-              <Image src='/icons/see_m_w.svg' height={30} width={30} />
+              <Image src='/icons/contact_me.svg' height={30} width={30} />
               <span>Contact me</span>
             </a>
           </Link>

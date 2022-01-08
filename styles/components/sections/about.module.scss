@@ -2,35 +2,23 @@
 @import "../../variables.scss";
 
 .main {
+  width: 100%;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 3rem;
+  h2 {
+    font-size: 48px;
+  }
   .text_content {
+    display: flex;
+    gap: 3rem;
     p {
-      max-width: 64ch;
+      max-width: 48ch;
+      letter-spacing: 0.075rem;
+      font-size: 1.7rem;
     }
   }
-
-  // .images {
-  //   display: flex;
-  //   align-items: row;
-  //   align-items: center;
-  //   flex-wrap: wrap;
-  //   justify-content: space-evenly;
-  //   gap: 3rem;
-  //   @include media(">tablet") {
-  //   }
-  //   .image {
-  //     position: relative;
-  //     width: 48px;
-  //     height: 48px;
-  //     flex: 1 1 5em;
-  //     @include media(">tablet") {
-  //       width: 64px;
-  //       height: 64px;
-  //     }
-  //   }
-  // }
 }

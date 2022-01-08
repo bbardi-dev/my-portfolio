@@ -7,34 +7,41 @@ const About = () => {
     <div className={styles.main} id='about'>
       <h2 className='line_separate'>About me</h2>
       <div className={styles.text_content}>
-        <p>This is a description about me.</p>
-        <p>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Autem
-          dolorem ab veniam quasi et voluptatibus tempora nemo. Debitis, libero
-          eveniet. Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-          Autem dolorem ab veniam quasi et voluptatibus tempora nemo. Debitis,
-          libero eveniet. Lorem ipsum, dolor sit amet consectetur adipisicing
-          elit. Autem dolorem ab veniam quasi et voluptatibus tempora nemo.
-          Debitis, libero eveniet.
-        </p>
-        <p>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Autem
-          dolorem ab veniam quasi et voluptatibus tempora nemo. Debitis, libero
-          eveniet.
-        </p>
+        <div>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro
+            labore, neque magnam necessitatibus, veniam itaque rerum ab tenetur
+            minus nisi ad saepe, natus earum laboriosam!
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro
+            labore, neque magnam necessitatibus, veniam itaque rerum ab tenetur
+            minus nisi ad saepe, natus earum laboriosam!
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro
+            labore, neque magnam necessitatibus, veniam itaque rerum ab tenetur
+            minus nisi ad saepe, natus earum laboriosam!
+          </p>
+        </div>
+        <div>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro
+            labore, neque magnam necessitatibus, veniam itaque rerum ab tenetur
+            minus nisi ad saepe, natus earum laboriosam!
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro
+            labore, neque magnam necessitatibus, veniam itaque rerum ab tenetur
+            minus nisi ad saepe, natus earum laboriosam!
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro
+            labore, neque magnam necessitatibus, veniam itaque rerum ab tenetur
+            minus nisi ad saepe, natus earum laboriosam!
+          </p>
+        </div>
       </div>
-
-      {/* <div className={styles.images}>
-        {images.map((val, i) => (
-          <div className={styles.image} key={i}>
-            <Image
-              src={`/dev-icons/${val}.svg`}
-              layout='fill'
-              objectFit='fill'
-            />
-          </div>
-        ))}
-      </div> */}
     </div>
   );
 };
