@@ -1,121 +1,135 @@
 @import "../../breakpoints.scss";
 @import "../../variables.scss";
 
+@mixin card-size($multiplier: 1) {
+  width: 420px * $multiplier;
+  height: 354px * $multiplier;
+  @include media(">=desktop") {
+    width: 450px * $multiplier;
+    height: 380px * $multiplier;
+  }
+}
+
+@mixin card-bg-size {
+  @include card-size(0.96);
+}
+
 .main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   width: 100%;
   .projects_section {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    min-width: 100%;
-    // @include media(">tablet") {
-    //   justify-content: center;
-    //   flex-direction: row;
-    //   flex-wrap: wrap;
-    //   margin: 2rem 1rem;
-    // }
-    gap: 3rem;
-    @include media(">tablet") {
-      gap: 6rem;
-    }
-    padding: 1rem;
-    .row_reverse {
-      @include media(">tablet") {
-        flex-direction: row-reverse;
-      }
-    }
-
+    justify-content: space-evenly;
+    gap: 2rem;
     .project_card {
-      @include media(">tablet") {
-        display: flex;
+      @include card-size();
+      position: relative;
+      .card_bg_yellow {
+        position: absolute;
+        top: 4%;
+        right: 4%;
+        @include card-bg-size;
+        background-color: $light-yellow;
+        border-radius: 10px;
+        filter: drop-shadow(-1px 1px 1px rgba(0, 0, 0, 0.335));
       }
-      background-color: $light-yellow;
-      min-width: 320px;
-      min-height: 360px;
-      max-width: 100%;
-      border-radius: 0.25rem;
-      .image {
-        position: relative;
-        min-height: 140px;
-        width: 100%;
-        @include media(">tablet") {
-        }
-        #nx_img {
-          border-radius: 0.25rem 0.25rem 0 0;
-          @include media(">tablet") {
-            border-radius: 0.25rem 0 0 0.25rem;
-          }
-        }
+      .card_bg_blue {
+        position: absolute;
+        top: 2%;
+        right: 2.5%;
+        @include card-bg-size;
+        background-color: $light-blue;
+        border-radius: 10px;
+        filter: drop-shadow(-2px 2px 2px rgba(0, 0, 0, 0.335));
       }
-
-      &.row_reverse {
-        #nx_img {
-          @include media(">tablet") {
-            border-radius: 0 0.25rem 0.25rem 0;
+      .card_bg_dark {
+        position: absolute;
+        top: 0;
+        right: 0.5%;
+        @include card-bg-size;
+        background-color: $dark-blue;
+        border-radius: 10px;
+        opacity: 64%;
+        z-index: 15;
+      }
+      .image_container {
+        position: absolute;
+        top: 0;
+        right: 0.5%;
+        @include card-bg-size;
+        filter: drop-shadow(-2px 2px 2px rgba(0, 0, 0, 0.335));
+        .image {
+          @include card-bg-size;
+          border-radius: 10px;
+          position: relative;
+          .nx_img {
+            border-radius: 10px;
           }
         }
       }
 
       .project_content {
-        @include media(">tablet") {
-          width: 100%;
-          align-self: center;
-          display: flex;
-          flex-direction: column;
-          gap: 1rem;
-        }
-        margin: 1rem 1rem;
+        position: absolute;
+        top: 0;
+        right: 0.5%;
+        @include card-bg-size;
+        font-size: 16px;
+        z-index: 18;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        gap: 0.25rem;
+        padding: 1.5rem;
         h3 {
-          font-size: 1.8rem;
-          @include media(">desktop") {
-            font-size: 2rem;
+          font-size: 2rem;
+          @include media(">=desktop") {
+            font-size: 2.5rem;
           }
-          color: $black;
         }
         p {
-          text-align: justify;
-          color: $black;
-          font-size: 1.5rem;
-          @include media(">desktop") {
-            font-size: 18px;
+          font-size: 1.3rem;
+          @include media(">=desktop") {
+            font-size: 1.5rem;
           }
-          line-height: 24px;
         }
         .techstack_items {
+          @include media("<=desktop") {
+            font-size: 1.15rem;
+            padding-bottom: 0.5rem;
+          }
           display: flex;
-          align-items: center;
-          justify-content: left;
-          gap: 1rem;
-          font-size: 1.25rem;
-          font-weight: 600;
-          color: $white;
+          justify-content: space-evenly;
+          font-weight: 700;
+          padding-bottom: 1rem;
         }
         .project_card_buttons {
+          padding: 1rem 0;
           display: flex;
           justify-content: space-between;
-          margin-top: 1.5rem;
+          color: $dark-blue;
           a {
-            border-radius: 3px;
-            font-size: 1.3rem;
-            padding: 0.75rem 2.5rem;
+            display: flex;
+            align-items: center;
+            border-radius: 10px;
+            padding: 0.25rem 0.75rem;
+            @include media(">desktop") {
+              padding: 0.5rem 2.5rem;
+            }
             background: radial-gradient(circle closest-side, $white 100%, #0000)
               center;
             background-size: 0 0;
             background-repeat: no-repeat;
             transition: 0.5s;
-            background-color: $dark-blue;
-            @include media(">desktop") {
-              font-size: 1.5rem;
-              padding: 1.25rem 5rem;
-            }
+            background-color: $yellow;
             &:hover {
               background-size: 300px 300px;
               color: $dark-blue;
+            }
+            span {
+              font-weight: 600;
+              font-size: 1.3rem;
+              padding: 0 0.75rem;
             }
           }
         }

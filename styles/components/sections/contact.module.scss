@@ -2,54 +2,22 @@
 @import "../../variables.scss";
 
 .contact {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  width: 100%;
   .contact_form {
-    padding: 2rem;
-    border: none;
-    border-radius: 3px;
-    width: 50%;
-    font-size: 2rem;
-    letter-spacing: 0.05rem;
-    background-color: $light-blue;
     form {
-      display: flex;
-      flex-direction: column;
-      align-items: left;
-      justify-content: space-evenly;
-      gap: 1rem;
       .input {
-        display: flex;
-        flex-direction: column;
         label {
         }
         input {
-          outline: none;
-          border: none;
-          border-radius: 3px;
-          filter: drop-shadow(0 1.5px 1.5px rgba(0, 0, 0, 25%));
         }
         textarea {
-          outline: none;
-          border: none;
-          border-radius: 3px;
-          filter: drop-shadow(0 1.5px 1.5px rgba(0, 0, 0, 25%));
         }
       }
       button[type="submit"] {
-        width: 100%;
-        background-color: $light-yellow;
-        color: $white;
+        background-color: $yellow;
+        color: $dark-blue;
         font-weight: 700;
-        letter-spacing: 0.2rem;
-        padding: 1rem;
-        border-radius: 3px;
+
         border: none;
-        filter: drop-shadow(0 1.5px 1.5px rgba(0, 0, 0, 25%));
       }
     }
   }

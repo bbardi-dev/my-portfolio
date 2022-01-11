@@ -3,23 +3,22 @@ import Image from "next/image";
 import styles from "../../styles/components/sections/projects.module.scss";
 import placeholder from "../../public/placeholder.jpg";
 
-const ProjectCard = ({ index }: { index: number }) => {
-  console.log(placeholder);
-
+const ProjectCard = () => {
   return (
-    <div
-      className={`${styles.project_card} ${
-        index % 2 === 0 ? styles.row_reverse : ""
-      }`}
-    >
-      <div className={styles.image}>
-        <Image
-          src={placeholder}
-          alt='Project Image'
-          layout='fill'
-          objectFit='cover'
-          id={styles.nx_img}
-        />
+    <div className={styles.project_card}>
+      <div className={styles.card_bg_yellow} />
+      <div className={styles.card_bg_blue} />
+      <div className={styles.card_bg_dark} />
+      <div className={styles.image_container}>
+        <div className={styles.image}>
+          <Image
+            src={placeholder}
+            alt='Project Image'
+            layout='fill'
+            objectFit='cover'
+            className={styles.nx_img}
+          />
+        </div>
       </div>
       <div className={styles.project_content}>
         <h3>Project Title</h3>
@@ -27,9 +26,7 @@ const ProjectCard = ({ index }: { index: number }) => {
           Project description. Lorem ipsum dolor sit, amet consectetur
           adipisicing elit. Amet veniam reiciendis quibusdam exercitationem
           error nam suscipit culpa quia laudantium. Project description. Lorem
-          ipsum dolor sit, amet consectetur adipisicing elit. Amet veniam
-          reiciendis quibusdam exercitationem error nam suscipit culpa quia
-          laudantium.
+          ipsum dolor sit, amet consectetur adipisicing elit.
         </p>
         <div className={styles.techstack_items}>
           <span>Tech Stack Item</span>
@@ -39,10 +36,16 @@ const ProjectCard = ({ index }: { index: number }) => {
         </div>
         <div className={styles.project_card_buttons}>
           <Link href='/' passHref>
-            <a>Source Code</a>
+            <a>
+              <Image src='/icons/source_code.svg' height={20} width={20} />
+              <span>Source Code</span>
+            </a>
           </Link>
           <Link href='/' passHref>
-            <a>Live Demo</a>
+            <a>
+              <Image src='/icons/live_demo.svg' height={20} width={20} />
+              <span>Live Demo</span>
+            </a>
           </Link>
         </div>
       </div>
@@ -51,14 +54,19 @@ const ProjectCard = ({ index }: { index: number }) => {
 };
 
 const Projects = () => {
-  const projects = [1, 2, 3, 4];
+  const projects = [1, 2, 3, 4, 5, 6];
 
   return (
     <div className={styles.main} id='projects'>
       <h2 className='line_separate'>My Projects</h2>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore
+        aspernatur voluptatum maxime at molestias, aperiam saepe. Recusandae
+        libero tempore laudantium.
+      </p>
       <div className={styles.projects_section}>
         {projects.map((_, i) => (
-          <ProjectCard key={i} index={i} />
+          <ProjectCard key={i} />
         ))}
       </div>
     </div>
