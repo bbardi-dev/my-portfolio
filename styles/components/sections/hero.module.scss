@@ -6,7 +6,7 @@
   flex-wrap: wrap;
   align-items: center;
   margin-top: 10rem;
-  @include media(">desktop") {
+  @include media(">=desktop") {
     flex-wrap: nowrap;
   }
 
