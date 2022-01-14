@@ -6,7 +6,7 @@
   width: 100%;
   h2 {
     font-size: 3rem;
-    margin-bottom: 8rem;
+    @include heading-effect("Contact");
   }
 
   .contact_content {
@@ -40,11 +40,11 @@
             background-color: $light-blue;
             font-weight: 600;
             &:focus {
-              outline: none;
-              border: 3px solid $light-yellow;
+              outline: 2px solid $yellow;
             }
           }
           textarea {
+            resize: none;
             margin-top: 0.75rem;
             padding: 1rem;
             width: 100%;
@@ -53,24 +53,25 @@
             background-color: $light-blue;
             font-weight: 600;
             &:focus {
-              outline: none;
-              border: 3px solid $light-yellow;
+              outline: 2px solid $yellow;
             }
           }
         }
         button[type="submit"] {
+          cursor: pointer;
           display: flex;
           align-items: center;
           justify-content: center;
           margin: 0.5rem 0;
-          background-color: $yellow;
-          color: $dark-blue;
           font-weight: 700;
           width: 100%;
           border-radius: 6px;
           font-size: 2rem;
           padding: 1rem 0;
           border: none;
+          @include btn-effect;
+          background-color: $yellow;
+          color: $dark-blue;
         }
       }
     }

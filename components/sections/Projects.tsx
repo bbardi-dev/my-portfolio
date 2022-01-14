@@ -58,8 +58,8 @@ const Projects = () => {
 
   return (
     <div className={styles.main} id='projects'>
-      <h2 className='line_separate'>My Projects</h2>
-      <p>
+      <h2>My Projects</h2>
+      <p className={styles.projects_description}>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore
         aspernatur voluptatum maxime at molestias, aperiam saepe. Recusandae
         libero tempore laudantium.

@@ -5,7 +5,7 @@ import { images } from "../../constants";
 const About = () => {
   return (
     <div className={styles.main} id='about'>
-      <h2 className='line_separate'>About me</h2>
+      <h2>About me</h2>
       <div className={styles.text_content}>
         <div>
           <p>

@@ -2,8 +2,16 @@
 @import "../../variables.scss";
 
 @mixin card-size($multiplier: 1) {
-  width: 420px * $multiplier;
-  height: 354px * $multiplier;
+  width: 336px * $multiplier;
+  height: 283px * $multiplier;
+  @include media(">=lg-phone") {
+    width: 357px * $multiplier;
+    height: 301px * $multiplier;
+  }
+  @include media(">=tablet") {
+    width: 420px * $multiplier;
+    height: 354px * $multiplier;
+  }
   @include media(">=desktop") {
     width: 450px * $multiplier;
     height: 380px * $multiplier;
@@ -16,7 +24,20 @@
 
 .main {
   width: 100%;
+  margin-top: 20rem;
+  h2 {
+    font-size: 3rem;
+    @include heading-effect("Projects");
+  }
+  .projects_description {
+    font-weight: 500;
+    font-size: 1.5rem;
+    margin-bottom: 5rem;
+  }
   .projects_section {
+    @include media(">=tablet") {
+      margin-left: -1.5rem;
+    }
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -74,7 +95,6 @@
         top: 0;
         right: 0.5%;
         @include card-bg-size;
-        font-size: 16px;
         z-index: 18;
         display: flex;
         flex-direction: column;
@@ -82,19 +102,31 @@
         gap: 0.25rem;
         padding: 1.5rem;
         h3 {
-          font-size: 2rem;
+          font-size: 1.5rem;
+          @include media(">=tablet") {
+            font-size: 2rem;
+          }
           @include media(">=desktop") {
             font-size: 2.5rem;
           }
         }
         p {
-          font-size: 1.3rem;
+          font-size: 1.15rem;
+          @include media(">=tablet") {
+            font-size: 1.3rem;
+          }
           @include media(">=desktop") {
             font-size: 1.5rem;
           }
         }
         .techstack_items {
-          @include media("<=desktop") {
+          font-size: 1rem;
+          padding-bottom: 0.25rem;
+          @include media(">=tablet") {
+            font-size: 1.15rem;
+            padding-bottom: 0.5rem;
+          }
+          @include media(">=desktop") {
             font-size: 1.15rem;
             padding-bottom: 0.5rem;
           }
@@ -113,19 +145,15 @@
             align-items: center;
             border-radius: 10px;
             padding: 0.25rem 0.75rem;
+            @include media(">=lg-phone") {
+              padding: 0.4rem 1rem;
+            }
             @include media(">desktop") {
               padding: 0.5rem 2.5rem;
             }
-            background: radial-gradient(circle closest-side, $white 100%, #0000)
-              center;
-            background-size: 0 0;
-            background-repeat: no-repeat;
-            transition: 0.5s;
+            @include btn-effect;
             background-color: $yellow;
-            &:hover {
-              background-size: 300px 300px;
-              color: $dark-blue;
-            }
+
             span {
               font-weight: 600;
               font-size: 1.3rem;
