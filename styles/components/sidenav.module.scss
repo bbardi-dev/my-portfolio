@@ -1,0 +1,49 @@
+@import "../breakpoints.scss";
+@import "../variables.scss";
+
+.side_nav {
+  display: none;
+  @include media(">=desktop") {
+    display: block;
+  }
+  position: fixed;
+  margin-right: 6rem;
+  width: 1rem;
+  top: 32%;
+  left: 3%;
+
+  .nav_inner {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 9rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    .nav_dot {
+      cursor: pointer;
+      display: block;
+      width: 1.5rem;
+      height: 1.5rem;
+      border-radius: 9999px;
+      border: 2px solid $yellow;
+      background-color: $yellow;
+      transition: background 200ms, border-color 200ms;
+      span {
+        font-size: 1.5rem;
+        background-color: $black;
+        padding: 0.5rem 1rem;
+        border-radius: 0.375rem;
+        margin-left: 2.5rem;
+        opacity: 0;
+      }
+      &:hover span {
+        opacity: 1;
+      }
+    }
+    .dot_active {
+      background-color: $dark-blue;
+    }
+  }
+}

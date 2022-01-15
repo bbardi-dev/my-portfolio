@@ -2,6 +2,9 @@ import Link from "next/link";
 import Image from "next/image";
 import styles from "../../styles/components/sections/projects.module.scss";
 import placeholder from "../../public/placeholder.jpg";
+import { InView } from "react-intersection-observer";
+import { SetStateAction } from "react";
+import { Sections } from "../../pages";
 
 const ProjectCard = () => {
   return (
@@ -53,23 +56,33 @@ const ProjectCard = () => {
   );
 };
 
-const Projects = () => {
+const Projects = ({
+  setOnScreen,
+}: {
+  setOnScreen: (value: SetStateAction<Sections>) => void;
+}) => {
   const projects = [1, 2, 3, 4, 5, 6];
 
   return (
-    <div className={styles.main} id='projects'>
-      <h2>My Projects</h2>
-      <p className={styles.projects_description}>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore
-        aspernatur voluptatum maxime at molestias, aperiam saepe. Recusandae
-        libero tempore laudantium.
-      </p>
-      <div className={styles.projects_section}>
-        {projects.map((_, i) => (
-          <ProjectCard key={i} />
-        ))}
+    <InView
+      threshold={0.5}
+      as='div'
+      onChange={(inView) => (inView ? setOnScreen("Projects") : null)}
+    >
+      <div className={styles.main} id='projects'>
+        <h2>My Projects</h2>
+        <p className={styles.projects_description}>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore
+          aspernatur voluptatum maxime at molestias, aperiam saepe. Recusandae
+          libero tempore laudantium.
+        </p>
+        <div className={styles.projects_section}>
+          {projects.map((_, i) => (
+            <ProjectCard key={i} />
+          ))}
+        </div>
       </div>
-    </div>
+    </InView>
   );
 };
 
