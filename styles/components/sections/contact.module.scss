@@ -32,7 +32,7 @@
             font-weight: 700;
           }
           input {
-            margin-top: 0.75rem;
+            margin-top: 0.5rem;
             padding: 1rem;
             width: 100%;
             border: none;
@@ -45,7 +45,7 @@
           }
           textarea {
             resize: none;
-            margin-top: 0.75rem;
+            margin-top: 0.5rem;
             padding: 1rem;
             width: 100%;
             border: none;
@@ -56,13 +56,18 @@
               outline: 2px solid $yellow;
             }
           }
+          .error_msg {
+            display: inline-block;
+            margin-top: 0.5rem;
+            color: $light-yellow;
+          }
         }
         button[type="submit"] {
           cursor: pointer;
           display: flex;
           align-items: center;
           justify-content: center;
-          margin: 0.5rem 0;
+          margin: 0.25rem 0;
           font-weight: 700;
           width: 100%;
           border-radius: 6px;

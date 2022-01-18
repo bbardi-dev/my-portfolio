@@ -1,6 +1,6 @@
 import Image from "next/image";
 import styles from "../../styles/components/sections/about.module.scss";
-import { images } from "../../constants";
+
 import { InView } from "react-intersection-observer";
 import { SetStateAction } from "react";
 import { Sections } from "../../pages";
