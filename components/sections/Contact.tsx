@@ -40,10 +40,13 @@ export default function ContactForm({
         body: JSON.stringify(data),
       });
       console.log(response);
-      setEmailStatus("success");
+      if (response.status === 200) setEmailStatus("success");
+      else {
+        setEmailStatus("error");
+      }
     } catch (error) {
-      console.error(error);
       setEmailStatus("error");
+      console.error(error);
     } finally {
       reset();
       setTimeout(() => setEmailStatus("initial"), 1000 * 2);
@@ -142,6 +145,13 @@ export default function ContactForm({
                 disabled={submitting}
                 onSubmit={handleSubmit(onFormSubmit)}
                 type='submit'
+                style={
+                  emailStatus === "success"
+                    ? { backgroundColor: "#3FF071" }
+                    : emailStatus === "error"
+                    ? { backgroundColor: "#F03F4A" }
+                    : {}
+                }
               >
                 {emailStatus === "initial" ? (
                   <>
