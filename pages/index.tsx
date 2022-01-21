@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import type { NextPage } from "next";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import Loader from "../components/Loader";
 import Menu from "../components/Menu";
 import About from "../components/sections/About";
