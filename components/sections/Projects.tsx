@@ -5,6 +5,7 @@ import placeholder from "../../public/placeholder.jpg";
 import { InView } from "react-intersection-observer";
 import { SetStateAction } from "react";
 import { Sections } from "../../pages";
+// import { motion } from "framer-motion";
 
 const ProjectCard = () => {
   return (

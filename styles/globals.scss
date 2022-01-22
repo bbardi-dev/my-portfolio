@@ -87,31 +87,3 @@ body.loading {
   overflow: hidden;
   height: 100vh;
 }
-
-// h2.line_separate {
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   width: 100%;
-//   white-space: nowrap;
-//   &::before {
-//     content: "";
-//     display: block;
-//     position: relative;
-//     top: 4px;
-//     width: 100px;
-//     height: 1.5px;
-//     margin-right: 20px;
-//     background-color: $apricot;
-//   }
-//   &::after {
-//     content: "";
-//     display: block;
-//     position: relative;
-//     top: 4px;
-//     width: 100px;
-//     height: 1.5px;
-//     margin-left: 20px;
-//     background-color: $apricot;
-//   }
-// }

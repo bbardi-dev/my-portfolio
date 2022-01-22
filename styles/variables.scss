@@ -65,7 +65,7 @@ $black: #000000;
 
   @include media(">=desktop") {
     &::after {
-      opacity: 6%;
+      opacity: 3%;
       content: $content;
       display: block;
       position: absolute;

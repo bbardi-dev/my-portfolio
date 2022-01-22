@@ -1,4 +1,3 @@
-import Image from "next/image";
 import styles from "../../styles/components/sections/about.module.scss";
 
 import { InView } from "react-intersection-observer";
