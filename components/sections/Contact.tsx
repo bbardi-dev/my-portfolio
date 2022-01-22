@@ -169,9 +169,10 @@ export default function ContactForm({
 
           <div className={styles.contact_info}>
             <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quo
-              facere similique temporibus. Nulla maxime vitae, sit assumenda
-              deleniti nemo dicta.
+              Feel free to get in touch. I'm currently looking for full-time
+              positions, as well as freelance contract work, but open to all
+              business inquiries. Below are a few more links where you can find
+              me.
             </p>
             <div className={styles.icon_info}>
               <Image src={"/icons/email.svg"} width={36} height={36} />

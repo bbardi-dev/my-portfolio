@@ -5,6 +5,7 @@ import placeholder from "../../public/placeholder.jpg";
 import { InView } from "react-intersection-observer";
 import { SetStateAction } from "react";
 import { Sections } from "../../pages";
+// import { motion } from "framer-motion";
 
 const ProjectCard = () => {
   return (
@@ -72,9 +73,9 @@ const Projects = ({
       <div className={styles.main} id='projects'>
         <h2>My Projects</h2>
         <p className={styles.projects_description}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore
-          aspernatur voluptatum maxime at molestias, aperiam saepe. Recusandae
-          libero tempore laudantium.
+          Here you can find some example projects I've worked on, either in a
+          hobby or professional capacity. You can see a live preview and also
+          see the code on Github for more details.
         </p>
         <div className={styles.projects_section}>
           {projects.map((_, i) => (
