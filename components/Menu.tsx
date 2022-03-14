@@ -10,7 +10,7 @@ export default function Menu({ setNavInView }: any) {
       <header className={styles.header}>
         <nav className='container'>
           <a href='#' className={styles.logo}>
-            Balazs.bardi
+            balazs.bardi
           </a>
           <ul className={`${styles.navlinks} ${!active ? styles.closed : ""}`}>
             <li>
@@ -29,11 +29,7 @@ export default function Menu({ setNavInView }: any) {
               </a>
             </li>
             <li>
-              <a
-                onClick={() => setActive(false)}
-                href='#contact'
-                className={styles.hirebtn}
-              >
+              <a onClick={() => setActive(false)} href='#contact' className={styles.hirebtn}>
                 Hire me
               </a>
             </li>

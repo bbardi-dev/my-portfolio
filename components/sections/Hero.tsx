@@ -4,12 +4,34 @@ import styles from "../../styles/components/sections/hero.module.scss";
 import { InView } from "react-intersection-observer";
 import { SetStateAction } from "react";
 import { Sections } from "../../pages";
+import { motion, Variants } from "framer-motion";
 
 const Hero = ({
   setOnScreen,
 }: {
   setOnScreen: (value: SetStateAction<Sections>) => void;
 }) => {
+  const headingAnimation: Variants = {
+    animate: {
+      transition: {
+        delayChildren: 0.36,
+        staggerChildren: 0.09,
+      },
+    },
+  };
+  const letterAnimation: Variants = {
+    initial: {
+      opacity: 0,
+    },
+    animate: {
+      opacity: 1,
+      transition: {
+        ease: [0.6, 0.01, -0.05, 0.96],
+        duration: 1,
+      },
+    },
+  };
+
   return (
     <InView
       as='div'
@@ -17,7 +39,17 @@ const Hero = ({
     >
       <div className={styles.main} id='hero'>
         <div className={styles.text_content}>
-          <h1>Creating beautiful experiences for the Web.</h1>
+          <motion.h1
+            initial='initial'
+            animate='animate'
+            variants={headingAnimation}
+          >
+            {Array.from("Creating beautiful experiences for the Web.").map(
+              (letter) => (
+                <motion.span variants={letterAnimation}>{letter}</motion.span>
+              )
+            )}
+          </motion.h1>
           <p>
             I’m here to help you with your Web development & design problems.
           </p>
