@@ -3,9 +3,14 @@ import Image from "next/image";
 import styles from "../../styles/components/sections/projects.module.scss";
 import placeholder from "../../public/placeholder.jpg";
 import { InView } from "react-intersection-observer";
-import { SetStateAction } from "react";
+import { SetStateAction, useState } from "react";
 import { Sections } from "../../pages";
-// import { motion } from "framer-motion";
+import {
+  AnimationControls,
+  motion,
+  TargetAndTransition,
+  VariantLabels,
+} from "framer-motion";
 
 const ProjectCard = () => {
   return (
@@ -64,11 +69,20 @@ const Projects = ({
 }) => {
   const projects = [1, 2, 3, 4, 5, 6];
 
+  const [animation, setAnimation] = useState<
+    boolean | AnimationControls | VariantLabels | TargetAndTransition
+  >(false);
+
+  const onViewChange = (inView: boolean) =>
+    inView
+      ? (setOnScreen("Projects"), setAnimation({ scale: 1, y: 0, opacity: 1 }))
+      : null;
+
   return (
     <InView
       threshold={0.5}
       as='div'
-      onChange={(inView) => (inView ? setOnScreen("Projects") : null)}
+      onChange={(inView) => onViewChange(inView)}
     >
       <div className={styles.main} id='projects'>
         <h2>My Projects</h2>
@@ -77,11 +91,15 @@ const Projects = ({
           hobby or professional capacity. You can see a live preview and also
           see the code on Github for more details.
         </p>
-        <div className={styles.projects_section}>
+        <motion.div
+          initial={{ scale: 0.25, y: 1000, opacity: 0 }}
+          animate={animation}
+          className={styles.projects_section}
+        >
           {projects.map((_, i) => (
             <ProjectCard key={i} />
           ))}
-        </div>
+        </motion.div>
       </div>
     </InView>
   );
