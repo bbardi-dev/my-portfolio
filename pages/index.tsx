@@ -1,3 +1,5 @@
+import { ApolloClient, createHttpLink, gql, InMemoryCache } from "@apollo/client";
+import { setContext } from "@apollo/client/link/context";
 import { motion } from "framer-motion";
 import type { NextPage } from "next";
 import { useState, useEffect } from "react";
@@ -11,7 +13,7 @@ import SideNav from "../components/SideNav";
 
 export type Sections = "Hero" | "About" | "Projects" | "Contact";
 
-const Home: NextPage = () => {
+const Home: NextPage = ({ pinnedItems }: any) => {
   const [loading, setLoading] = useState(true);
   const [sectionOnScreen, setOnScreen] = useState<Sections>("Hero");
   const [navInView, setNavInView] = useState(true);
@@ -46,7 +48,7 @@ const Home: NextPage = () => {
             <About setOnScreen={setOnScreen} />
           </div>
           <div className='container'>
-            <Projects setOnScreen={setOnScreen} />
+            <Projects setOnScreen={setOnScreen} projects={pinnedItems} />
           </div>
           <div className='container'>
             <Contact setOnScreen={setOnScreen} />
@@ -56,5 +58,54 @@ const Home: NextPage = () => {
     </>
   );
 };
+
+export async function getStaticProps() {
+  const httpLink = createHttpLink({
+    uri: "https://api.github.com/graphql",
+  });
+
+  const authLink = setContext((_, { headers }) => {
+    return {
+      headers: {
+        ...headers,
+        authorization: `Bearer ${process.env.GITHUB_ACCESS_TOKEN}`,
+      },
+    };
+  });
+
+  const client = new ApolloClient({
+    link: authLink.concat(httpLink),
+    cache: new InMemoryCache(),
+  });
+
+  const { data } = await client.query({
+    query: gql`
+      {
+        user(login: "bbardi-dev") {
+          pinnedItems(first: 6) {
+            edges {
+              node {
+                ... on Repository {
+                  id
+                  name
+                  url
+                }
+              }
+            }
+          }
+        }
+      }
+    `,
+  });
+
+  const pinnedItems = data.user.pinnedItems.edges.map(({ node }: { node: unknown }) => node);
+
+  console.log(pinnedItems);
+  return {
+    props: {
+      pinnedItems,
+    },
+  };
+}
 
 export default Home;
