@@ -64,16 +64,11 @@ function ProjectCard({ project }) {
       </div>
       <div className={styles.project_content}>
         <h3>{project.name}</h3>
-        <p>
-          Project description. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Amet veniam
-          reiciendis quibusdam exercitationem error nam suscipit culpa quia laudantium. Project description.
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-        </p>
+        <p>{project.description}</p>
         <div className={styles.techstack_items}>
-          <span>Tech Stack Item</span>
-          <span>Tech Stack Item</span>
-          <span>Tech Stack Item</span>
-          <span>Tech Stack Item</span>
+          {project.repositoryTopics.edges.map((edge) => (
+            <span>{edge?.node?.topic?.name}</span>
+          ))}
         </div>
         <div className={styles.project_card_buttons}>
           <Link href={project.url} passHref>
@@ -82,7 +77,7 @@ function ProjectCard({ project }) {
               <span>Source Code</span>
             </a>
           </Link>
-          <Link href='/' passHref>
+          <Link href={project.homepageUrl} passHref>
             <a>
               <Image src='/icons/live_demo.svg' height={20} width={20} />
               <span>Live Demo</span>

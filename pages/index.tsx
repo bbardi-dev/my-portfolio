@@ -88,7 +88,18 @@ export async function getStaticProps() {
                 ... on Repository {
                   id
                   name
+                  description
                   url
+                  repositoryTopics(first: 10) {
+                    edges {
+                      node {
+                        topic {
+                          name
+                        }
+                      }
+                    }
+                  }
+                  homepageUrl
                 }
               }
             }
@@ -98,7 +109,8 @@ export async function getStaticProps() {
     `,
   });
 
-  const pinnedItems = data.user.pinnedItems.edges.map(({ node }: { node: unknown }) => node);
+  let pinnedItems = data.user.pinnedItems.edges.map(({ node }: { node: unknown }) => node);
+  pinnedItems = pinnedItems.filter((f) => f.name !== "my-portfolio");
 
   console.log(pinnedItems);
   return {
