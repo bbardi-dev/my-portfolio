@@ -10,10 +10,9 @@ import Contact from "../components/sections/Contact";
 import Hero from "../components/sections/Hero";
 import Projects from "../components/sections/Projects";
 import SideNav from "../components/SideNav";
+import { Project, Sections } from "../utils/types";
 
-export type Sections = "Hero" | "About" | "Projects" | "Contact";
-
-const Home: NextPage = ({ pinnedItems }: any) => {
+const Home = ({ pinnedItems }: { pinnedItems: Project[] }) => {
   const [loading, setLoading] = useState(true);
   const [sectionOnScreen, setOnScreen] = useState<Sections>("Hero");
   const [navInView, setNavInView] = useState(true);
@@ -109,10 +108,9 @@ export async function getStaticProps() {
     `,
   });
 
-  let pinnedItems = data.user.pinnedItems.edges.map(({ node }: { node: unknown }) => node);
-  pinnedItems = pinnedItems.filter((f) => f.name !== "my-portfolio");
+  let pinnedItems: Project[] = data.user.pinnedItems.edges.map(({ node }: any) => node);
+  pinnedItems = pinnedItems.filter((p) => p.name !== "my-portfolio");
 
-  console.log(pinnedItems);
   return {
     props: {
       pinnedItems,

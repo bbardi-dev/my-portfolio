@@ -38,13 +38,14 @@
     max-width: 60ch;
   }
   .projects_section {
-    @include media(">=tablet") {
-      margin-left: -1.5rem;
-    }
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: center;
+    @include media(">=tablet") {
+      margin-left: -1.5rem;
+      justify-content: flex-start;
+    }
     gap: 2rem;
     .project_card {
       @include card-size();
@@ -74,7 +75,7 @@
         @include card-bg-size;
         background-color: $dark-blue;
         border-radius: 10px;
-        opacity: 64%;
+        opacity: 72%;
         z-index: 15;
       }
       .image_container {
@@ -101,20 +102,25 @@
         z-index: 18;
         display: flex;
         flex-direction: column;
-        justify-content: space-evenly;
-        gap: 0.25rem;
+        justify-content: space-between;
+        gap: 1rem;
         padding: 1.5rem;
-        h3 {
+        .project_title {
           font-size: 1.5rem;
           @include media(">=tablet") {
             font-size: 2rem;
           }
           @include media(">=desktop") {
-            font-size: 2.5rem;
+            font-size: 2.25rem;
+            padding-bottom: 0rem;
+            margin-bottom: 0rem;
           }
         }
-        p {
+        .project_desc {
+          height: 32%;
           font-size: 1.15rem;
+          margin-top: 0;
+          padding-top: 0;
           @include media(">=tablet") {
             font-size: 1.3rem;
           }
@@ -123,27 +129,33 @@
           }
         }
         .techstack_items {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-between;
+          width: 100%;
+          font-weight: 700;
           font-size: 1rem;
-          padding-bottom: 0.25rem;
+          line-height: 1.25rem;
           @include media(">=tablet") {
             font-size: 1.15rem;
-            padding-bottom: 0.5rem;
+            line-height: 1.36rem;
           }
           @include media(">=desktop") {
             font-size: 1.15rem;
-            padding-bottom: 0.5rem;
+            line-height: 1.75rem;
           }
-          display: flex;
-          justify-content: space-evenly;
-          font-weight: 700;
-          padding-bottom: 1rem;
+          .techstack_item {
+            padding: 0 1rem;
+            border: 1px solid $white;
+            border-radius: 10px;
+            margin-bottom: 0.5rem;
+          }
         }
         .project_card_buttons {
-          padding: 1rem 0;
           display: flex;
           justify-content: space-between;
           color: $dark-blue;
-          a {
+          .project_card_button {
             display: flex;
             align-items: center;
             border-radius: 10px;

@@ -50,9 +50,9 @@ $black: #000000;
   position: relative;
   z-index: 2;
   margin-bottom: 8rem;
-  @include media(">=desktop") {
-    margin-bottom: 12rem;
-  }
+  // @include media(">=desktop") {
+  //   margin-bottom: 8rem;
+  // }
   &::before {
     content: "";
     display: block;

@@ -3,19 +3,15 @@ import Image from "next/image";
 import styles from "../../styles/components/sections/hero.module.scss";
 import { InView } from "react-intersection-observer";
 import { SetStateAction } from "react";
-import { Sections } from "../../pages";
 import { motion, Variants } from "framer-motion";
+import { Sections } from "../../utils/types";
 
-const Hero = ({
-  setOnScreen,
-}: {
-  setOnScreen: (value: SetStateAction<Sections>) => void;
-}) => {
+const Hero = ({ setOnScreen }: { setOnScreen: (value: SetStateAction<Sections>) => void }) => {
   const headingAnimation: Variants = {
     animate: {
       transition: {
-        delayChildren: 0.36,
-        staggerChildren: 0.09,
+        delayChildren: 0.24,
+        staggerChildren: 0.06,
       },
     },
   };
@@ -33,26 +29,17 @@ const Hero = ({
   };
 
   return (
-    <InView
-      as='div'
-      onChange={(inView) => (inView ? setOnScreen("Hero") : null)}
-    >
+    <InView as='div' onChange={(inView) => (inView ? setOnScreen("Hero") : null)}>
       <div className={styles.main} id='hero'>
         <div className={styles.text_content}>
-          <motion.h1
-            initial='initial'
-            animate='animate'
-            variants={headingAnimation}
-          >
-            {Array.from("Creating beautiful experiences for the Web.").map(
-              (letter) => (
-                <motion.span variants={letterAnimation}>{letter}</motion.span>
-              )
-            )}
+          <motion.h1 initial='initial' animate='animate' variants={headingAnimation}>
+            {Array.from("Creating beautiful experiences for the Web.").map((letter, i) => (
+              <motion.span key={letter + i} variants={letterAnimation}>
+                {letter}
+              </motion.span>
+            ))}
           </motion.h1>
-          <p>
-            I’m here to help you with your Web development & design problems.
-          </p>
+          <p>I’m here to help you with your Web development & design problems.</p>
           <div className={styles.links}>
             <Link href='#projects' passHref>
               <a>
