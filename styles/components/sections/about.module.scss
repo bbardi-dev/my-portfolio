@@ -8,17 +8,70 @@
     font-size: 3rem;
     @include heading-effect("About");
   }
-  .text_content {
+  .main_content {
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
+    @include media(">=tablet") {
+      flex-direction: row;
+      justify-content: space-between;
+    }
     gap: 3rem;
-    p {
-      max-width: 48ch;
-      letter-spacing: 0.075rem;
-      font-size: 1.5rem;
-      line-height: 2.5rem;
+    .text_content {
+      p {
+        max-width: 60ch;
+        letter-spacing: 0.075rem;
+        font-size: 1.5rem;
+        line-height: 2.5rem;
+      }
+    }
+    .image_container {
+      border-radius: 10px;
+      width: 360px;
+      height: 360px;
+      position: relative;
+      .image_cover {
+        position: absolute;
+        top: 0;
+        left: 0;
+        border-radius: 10px;
+        width: 360px;
+        height: 360px;
+        z-index: 8;
+        background-color: $dark-blue;
+        opacity: 6%;
+        &:hover,
+        :focus {
+          opacity: 0;
+        }
+      }
+
+      .image {
+        border-radius: 10px;
+        z-index: 7;
+      }
+      .image_border {
+        position: absolute;
+        top: 6%;
+        right: -6%;
+        z-index: 6;
+        border: 3px solid $light-blue;
+        border-radius: 10px;
+        width: 360px;
+        height: 360px;
+        filter: drop-shadow(3px 3px 1px rgba(0, 0, 0, 0.335));
+      }
+      .image_border2 {
+        position: absolute;
+        top: 12%;
+        right: -12%;
+        z-index: 4;
+        border: 3px solid $light-yellow;
+        border-radius: 10px;
+        width: 360px;
+        height: 360px;
+      }
     }
   }
 }

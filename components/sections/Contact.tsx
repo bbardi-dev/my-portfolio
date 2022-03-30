@@ -3,8 +3,9 @@ import Link from "next/link";
 import { SetStateAction, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { InView } from "react-intersection-observer";
-import { Sections } from "../../pages";
+
 import styles from "../../styles/components/sections/contact.module.scss";
+import { Sections } from "../../utils/types";
 
 interface Inputs {
   name: string;
@@ -55,11 +56,7 @@ export default function ContactForm({
   };
 
   return (
-    <InView
-      threshold={0.5}
-      as='div'
-      onChange={(inView) => (inView ? setOnScreen("Contact") : null)}
-    >
+    <InView threshold={0.5} as='div' onChange={(inView) => (inView ? setOnScreen("Contact") : null)}>
       <div className={styles.contact} id='contact'>
         <h2>Contact</h2>
 
@@ -77,16 +74,11 @@ export default function ContactForm({
                     },
                     maxLength: {
                       value: 64,
-                      message:
-                        "Is your name really longer than 64 characters? 🤔",
+                      message: "Is your name really longer than 64 characters? 🤔",
                     },
                   })}
                 />
-                {errors?.name?.message && (
-                  <span className={styles.error_msg}>
-                    {errors?.name?.message}
-                  </span>
-                )}
+                {errors?.name?.message && <span className={styles.error_msg}>{errors?.name?.message}</span>}
               </div>
               <div className={styles.input}>
                 <label htmlFor='email'>Email</label>
@@ -104,15 +96,12 @@ export default function ContactForm({
                     },
                     maxLength: {
                       value: 64,
-                      message:
-                        "Is your email address really longer than 64 characters? 🤔",
+                      message: "Is your email address really longer than 64 characters? 🤔",
                     },
                   })}
                 />
                 {errors?.email?.message && (
-                  <span className={styles.error_msg}>
-                    {errors?.email?.message}
-                  </span>
+                  <span className={styles.error_msg}>{errors?.email?.message}</span>
                 )}
               </div>
               <div className={styles.input}>
@@ -130,15 +119,12 @@ export default function ContactForm({
                     },
                     maxLength: {
                       value: 999,
-                      message:
-                        "Your message shouldn't be longer than 999 characters.",
+                      message: "Your message shouldn't be longer than 999 characters.",
                     },
                   })}
                 />
                 {errors?.message?.message && (
-                  <span className={styles.error_msg}>
-                    {errors?.message?.message}
-                  </span>
+                  <span className={styles.error_msg}>{errors?.message?.message}</span>
                 )}
               </div>
               <button
@@ -155,8 +141,7 @@ export default function ContactForm({
               >
                 {emailStatus === "initial" ? (
                   <>
-                    <span>Send Email </span>{" "}
-                    <Image src={"/icons/send_it.svg"} width={40} height={40} />
+                    <span>Send Email </span> <Image src={"/icons/send_it.svg"} width={40} height={40} />
                   </>
                 ) : emailStatus === "success" ? (
                   <span>Email Sent successfully 😎👍</span>
@@ -169,10 +154,9 @@ export default function ContactForm({
 
           <div className={styles.contact_info}>
             <p>
-              Feel free to get in touch. I'm currently looking for full-time
-              positions, as well as freelance contract work, but open to all
-              business inquiries. Below are a few more links where you can find
-              me.
+              Feel free to get in touch. I'm currently looking for full-time positions, as well as freelance
+              contract work, but open to all business inquiries. Below are a few more links where you can
+              find me.
             </p>
             <div className={styles.icon_info}>
               <Image src={"/icons/email.svg"} width={36} height={36} />
