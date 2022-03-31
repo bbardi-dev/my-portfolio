@@ -7,20 +7,31 @@ import { motion, Variants } from "framer-motion";
 import { Sections } from "../../utils/types";
 
 const Hero = ({ setOnScreen }: { setOnScreen: (value: SetStateAction<Sections>) => void }) => {
-  const headingAnimation: Variants = {
-    animate: {
-      transition: {
-        delayChildren: 0.24,
-        staggerChildren: 0.06,
-      },
-    },
-  };
-  const letterAnimation: Variants = {
+  const staggeredAnimation: Variants = window.matchMedia("(max-width: 768px)").matches
+    ? {
+        animate: {
+          transition: {
+            delayChildren: 0.36,
+            staggerChildren: 0.24,
+          },
+        },
+      }
+    : {
+        animate: {
+          transition: {
+            delayChildren: 1.2,
+            staggerChildren: 0.36,
+          },
+        },
+      };
+  const fadeUp: Variants = {
     initial: {
       opacity: 0,
+      y: 12,
     },
     animate: {
       opacity: 1,
+      y: 0,
       transition: {
         ease: [0.6, 0.01, -0.05, 0.96],
         duration: 1,
@@ -31,16 +42,17 @@ const Hero = ({ setOnScreen }: { setOnScreen: (value: SetStateAction<Sections>) 
   return (
     <InView as='div' onChange={(inView) => (inView ? setOnScreen("Hero") : null)}>
       <div className={styles.main} id='hero'>
-        <div className={styles.text_content}>
-          <motion.h1 initial='initial' animate='animate' variants={headingAnimation}>
-            {Array.from("Creating beautiful experiences for the Web.").map((letter, i) => (
-              <motion.span key={letter + i} variants={letterAnimation}>
-                {letter}
-              </motion.span>
-            ))}
-          </motion.h1>
-          <p>I’m here to help you with your Web development & design problems.</p>
-          <div className={styles.links}>
+        <motion.div
+          initial='initial'
+          animate='animate'
+          variants={staggeredAnimation}
+          className={styles.text_content}
+        >
+          <motion.h1 variants={fadeUp}>Creating beautiful experiences for the Web.</motion.h1>
+          <motion.p variants={fadeUp}>
+            I’m here to help you with your Web development & design problems.
+          </motion.p>
+          <motion.div variants={fadeUp} className={styles.links}>
             <Link href='#projects' passHref>
               <a>
                 <Image src='/icons/see_m_w.svg' height={30} width={30} />
@@ -53,8 +65,8 @@ const Hero = ({ setOnScreen }: { setOnScreen: (value: SetStateAction<Sections>) 
                 <span>Contact me</span>
               </a>
             </Link>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
         <div className={styles.coding}>
           <Image src='/coding.svg' height={1000} width={1000} />
         </div>

@@ -1,6 +1,18 @@
 @import "../../breakpoints.scss";
 @import "../../variables.scss";
 
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  48% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 .main {
   width: 100%;
   display: flex;
@@ -60,6 +72,8 @@
     display: none;
     @include media(">=desktop") {
       display: block;
+      animation: fadeIn 4.8s;
+      animation-timing-function: cubic-bezier(0.6, 0.01, -0.05, 0.96);
     }
   }
 }

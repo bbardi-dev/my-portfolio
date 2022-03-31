@@ -2,15 +2,17 @@
 @import "../../variables.scss";
 
 @mixin card-size($multiplier: 1) {
-  width: 336px * $multiplier;
-  height: 283px * $multiplier;
+  width: 336px * 0.84;
+  height: 283px * 0.84;
   @include media(">=lg-phone") {
     width: 357px * $multiplier;
     height: 301px * $multiplier;
   }
   @include media(">=tablet") {
-    width: 420px * $multiplier;
-    height: 354px * $multiplier;
+    width: 360px * $multiplier;
+    height: 303px * $multiplier;
+    // width: 420px * $multiplier;
+    // height: 354px * $multiplier;
   }
   @include media(">=desktop") {
     width: 450px * $multiplier;
@@ -29,24 +31,36 @@
   h2 {
     font-size: 3rem;
     @include heading-effect("Projects");
+    @include media("<desktop") {
+      margin-bottom: 1rem;
+      padding-bottom: 1rem;
+    }
   }
   .projects_description {
-    font-weight: 500;
-    font-size: 1.5rem;
-    line-height: 2.5rem;
-    margin-bottom: 5rem;
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    @include media(">=lg-phone") {
+      font-size: 1.5rem;
+      line-height: 2.5rem;
+    }
+    margin-bottom: 3.6rem;
     max-width: 60ch;
   }
   .projects_section {
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
     justify-content: center;
+    gap: 1rem;
     @include media(">=tablet") {
-      margin-left: -1.5rem;
+      width: 120%;
+      margin-left: -2.4rem;
       justify-content: flex-start;
     }
-    gap: 2rem;
+    @include media(">=desktop") {
+      margin-left: -1.2rem;
+      gap: 2rem;
+    }
+
     .project_card {
       @include card-size();
       position: relative;
@@ -96,8 +110,11 @@
 
       .project_content {
         position: absolute;
-        top: 0;
-        right: 0.5%;
+        top: -3.6%;
+        @include media(">=lg-phone") {
+          top: -2.4%;
+        }
+        right: 0.36%;
         @include card-bg-size;
         z-index: 18;
         display: flex;
@@ -106,23 +123,30 @@
         gap: 1rem;
         padding: 1.5rem;
         .project_title {
-          font-size: 1.5rem;
+          font-size: 1.3rem;
+          @include media(">=lg-phone") {
+            font-size: 1.5rem;
+          }
           @include media(">=tablet") {
             font-size: 2rem;
+            margin-bottom: 0;
+            padding-bottom: 0;
           }
           @include media(">=desktop") {
             font-size: 2.25rem;
-            padding-bottom: 0rem;
-            margin-bottom: 0rem;
           }
         }
         .project_desc {
-          height: 32%;
-          font-size: 1.15rem;
+          height: 24%;
+          font-size: 1rem;
           margin-top: 0;
           padding-top: 0;
+          font-weight: 500;
+          @include media(">=lg-phone") {
+            font-size: 1.15rem;
+          }
           @include media(">=tablet") {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
           }
           @include media(">=desktop") {
             font-size: 1.5rem;
@@ -131,24 +155,28 @@
         .techstack_items {
           display: flex;
           flex-wrap: wrap;
-          justify-content: space-between;
+          justify-content: left;
+          gap: 0.5rem;
           width: 100%;
-          font-weight: 700;
-          font-size: 1rem;
-          line-height: 1.25rem;
-          @include media(">=tablet") {
-            font-size: 1.15rem;
-            line-height: 1.36rem;
+          font-weight: 400;
+          font-size: 0.75rem;
+          line-height: 1.15rem;
+          @include media(">=lg-phone") {
+            font-size: 1rem;
+            line-height: 1.25rem;
           }
           @include media(">=desktop") {
             font-size: 1.15rem;
             line-height: 1.75rem;
           }
           .techstack_item {
-            padding: 0 1rem;
+            padding: 0 0.5rem;
             border: 1px solid $white;
             border-radius: 10px;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.25rem;
+            @include media(">=lg-phone") {
+              margin-bottom: 0.5rem;
+            }
           }
         }
         .project_card_buttons {
@@ -159,7 +187,7 @@
             display: flex;
             align-items: center;
             border-radius: 10px;
-            padding: 0.25rem 0.75rem;
+            padding: 0.15rem 0.75rem;
             @include media(">=lg-phone") {
               padding: 0.4rem 1rem;
             }
@@ -171,8 +199,12 @@
 
             span {
               font-weight: 600;
-              font-size: 1.3rem;
-              padding: 0 0.75rem;
+              font-size: 1rem;
+              padding: 0 0.5rem;
+              @include media(">=lg-phone") {
+                font-size: 1.3rem;
+                padding: 0 0.75rem;
+              }
             }
           }
         }

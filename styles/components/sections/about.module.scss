@@ -1,12 +1,29 @@
 @import "../../breakpoints.scss";
 @import "../../variables.scss";
 
+@mixin size {
+  width: 320px;
+  height: 320px;
+  // @include media(">=desktop, <md-desktop") {
+  //   width: 360px;
+  //   height: 360px;
+  // }
+  @include media(">=md-desktop") {
+    width: 360px;
+    height: 360px;
+  }
+}
+
 .main {
   width: 100%;
   margin-top: 16rem;
   h2 {
     font-size: 3rem;
     @include heading-effect("About");
+    @include media("<desktop") {
+      margin-bottom: 1rem;
+      padding-bottom: 1rem;
+    }
   }
   .main_content {
     width: 100%;
@@ -21,23 +38,43 @@
     .text_content {
       p {
         max-width: 60ch;
-        letter-spacing: 0.075rem;
         font-size: 1.5rem;
         line-height: 2.5rem;
+        .highlighted {
+          color: $light-yellow;
+        }
+      }
+      ul {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(140px, 200px));
+        gap: 0.5rem 0;
+        margin-left: -2rem;
+        font-size: 1.15rem;
+        li {
+          position: relative;
+          padding: 0 0.75rem;
+          &::marker {
+            content: "○";
+            font-size: 1.75rem;
+            color: $light-yellow;
+          }
+        }
       }
     }
     .image_container {
+      display: block;
+      @include size;
       border-radius: 10px;
-      width: 360px;
-      height: 360px;
       position: relative;
+      @include media(">=desktop") {
+        margin-right: 7rem;
+      }
       .image_cover {
+        @include size;
         position: absolute;
         top: 0;
         left: 0;
         border-radius: 10px;
-        width: 360px;
-        height: 360px;
         z-index: 8;
         background-color: $dark-blue;
         opacity: 6%;
@@ -52,25 +89,39 @@
         z-index: 7;
       }
       .image_border {
+        @include size;
         position: absolute;
         top: 6%;
         right: -6%;
+        @include media(">=tablet", "<desktop") {
+          width: 220px;
+          height: 320px;
+        }
+        @include media(">=desktop", "<md-desktop") {
+          width: 280px;
+          height: 320px;
+        }
         z-index: 6;
         border: 3px solid $light-blue;
         border-radius: 10px;
-        width: 360px;
-        height: 360px;
         filter: drop-shadow(3px 3px 1px rgba(0, 0, 0, 0.335));
       }
       .image_border2 {
+        @include size;
         position: absolute;
         top: 12%;
         right: -12%;
-        z-index: 4;
+        @include media(">=tablet", "<desktop") {
+          width: 220px;
+          height: 320px;
+        }
+        @include media(">=desktop", "<md-desktop") {
+          width: 280px;
+          height: 320px;
+        }
+        z-index: 5;
         border: 3px solid $light-yellow;
         border-radius: 10px;
-        width: 360px;
-        height: 360px;
       }
     }
   }

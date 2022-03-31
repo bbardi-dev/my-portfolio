@@ -1,7 +1,5 @@
 import { ApolloClient, createHttpLink, gql, InMemoryCache } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
-import { motion } from "framer-motion";
-import type { NextPage } from "next";
 import { useState, useEffect } from "react";
 import Loader from "../components/Loader";
 import Menu from "../components/Menu";
@@ -28,16 +26,7 @@ const Home = ({ pinnedItems }: { pinnedItems: Project[] }) => {
       {loading ? (
         <Loader setLoading={setLoading} />
       ) : (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{
-            opacity: 1,
-            transition: {
-              duration: 0.5,
-              ease: [0.6, 0.01, -0.05, 0.95],
-            },
-          }}
-        >
+        <>
           <Menu setNavInView={setNavInView} />
           <SideNav section={sectionOnScreen} navInView={navInView} />
           <div className='container'>
@@ -52,7 +41,7 @@ const Home = ({ pinnedItems }: { pinnedItems: Project[] }) => {
           <div className='container'>
             <Contact setOnScreen={setOnScreen} />
           </div>
-        </motion.div>
+        </>
       )}
     </>
   );

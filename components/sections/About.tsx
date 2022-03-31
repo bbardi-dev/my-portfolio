@@ -13,30 +13,34 @@ const About = ({ setOnScreen }: { setOnScreen: (value: SetStateAction<Sections>)
         <div className={styles.main_content}>
           <div className={styles.text_content}>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro labore, neque magnam
-              necessitatibus, veniam itaque rerum ab tenetur minus nisi ad saepe, natus earum laboriosam!
+              Hi, my name is Balázs, I'm a <span className={styles.highlighted}>fullstack developer </span>
+              with an <span className={styles.highlighted}>eye for design</span>. As a developer I strive to
+              <span className={styles.highlighted}> create products</span> that are both
+              <span className={styles.highlighted}> beautiful and usable</span>. I have a great
+              <span className={styles.highlighted}> passion for learning </span> and constant growth, which
+              I apply to all areas of my life, including programming. I strive to understand the best
+              practices in the industry to write{" "}
+              <span className={styles.highlighted}>code that is fast, clean and maintainable</span>.
             </p>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro labore, neque magnam
-              necessitatibus, veniam itaque rerum ab tenetur minus nisi ad saepe, natus earum laboriosam!
+              I have some experience freelancing and building projects on my own, but currently{" "}
+              <span className={styles.highlighted}>I'm looking for a full-time position</span>. If you think
+              we'd be a good match, don't hesitate to reach out!
             </p>
+            <p>Tech wise, my current focus is on:</p>
             <ul>
-              <li>Javascript/Typescript</li>
-              <li>React/Vue</li>
-              <li>Node.js</li>
+              <li>Javascript / Typescript</li>
+              <li>React.js / Next.js</li>
+              <li>CSS Frameworks, SCSS</li>
+              <li>Node.js / Express.js</li>
+              <li>UI/UX, Figma</li>
+              <li>Vue.js</li>
             </ul>
           </div>
 
           <div className={styles.image_container}>
             <div className={styles.image_cover} />
-            <Image
-              quality={100}
-              objectFit='cover'
-              className={styles.image}
-              width={360}
-              height={360}
-              src={me}
-            />
+            <Image quality={100} objectFit='cover' layout='fill' className={styles.image} src={me} />
             <div className={styles.image_border} />
             <div className={styles.image_border2} />
           </div>
