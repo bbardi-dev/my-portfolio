@@ -3,8 +3,7 @@ import Image from "next/image";
 import styles from "../../styles/components/sections/projects.module.scss";
 import placeholder from "../../public/placeholder.jpg";
 import { InView } from "react-intersection-observer";
-import { SetStateAction, useState } from "react";
-import { AnimationControls, motion, TargetAndTransition, VariantLabels } from "framer-motion";
+import { SetStateAction } from "react";
 import { Project, Sections } from "../../utils/types";
 import { firstLetterToUppercase } from "../../utils/util";
 
@@ -15,12 +14,7 @@ export default function Projects({
   setOnScreen: (value: SetStateAction<Sections>) => void;
   projects: Project[];
 }) {
-  const [animation, setAnimation] = useState<
-    boolean | AnimationControls | VariantLabels | TargetAndTransition
-  >(false);
-
-  const onViewChange = (inView: boolean) =>
-    inView ? (setOnScreen("Projects"), setAnimation({ scale: 1, y: 0, opacity: 1 })) : null;
+  const onViewChange = (inView: boolean) => (inView ? setOnScreen("Projects") : null);
 
   return (
     <InView threshold={0.5} as='div' onChange={(inView) => onViewChange(inView)}>
@@ -30,15 +24,11 @@ export default function Projects({
           Here you can find some example projects I've worked on, either in a hobby or professional
           capacity. You can see a live preview and also see the code on Github for more details.
         </p>
-        <motion.div
-          // initial={{ scale: 0.25, y: 1000, opacity: 0 }}
-          // animate={animation}
-          className={styles.projects_section}
-        >
+        <div className={styles.projects_section}>
           {projects.map((p, i) => (
             <ProjectCard project={p} key={i} />
           ))}
-        </motion.div>
+        </div>
       </div>
     </InView>
   );
