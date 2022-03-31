@@ -48,61 +48,69 @@ const Home = ({ pinnedItems }: { pinnedItems: Project[] }) => {
 };
 
 export async function getStaticProps() {
-  const httpLink = createHttpLink({
-    uri: "https://api.github.com/graphql",
-  });
+  try {
+    const httpLink = createHttpLink({
+      uri: "https://api.github.com/graphql",
+    });
 
-  const authLink = setContext((_, { headers }) => {
-    return {
-      headers: {
-        ...headers,
-        authorization: `Bearer ${process.env.GITHUB_ACCESS_TOKEN}`,
-      },
-    };
-  });
+    const authLink = setContext((_, { headers }) => {
+      return {
+        headers: {
+          ...headers,
+          authorization: `Bearer ${process.env.GITHUB_ACCESS_TOKEN}`,
+        },
+      };
+    });
 
-  const client = new ApolloClient({
-    link: authLink.concat(httpLink),
-    cache: new InMemoryCache(),
-  });
+    const client = new ApolloClient({
+      link: authLink.concat(httpLink),
+      cache: new InMemoryCache(),
+    });
 
-  const { data } = await client.query({
-    query: gql`
-      {
-        user(login: "bbardi-dev") {
-          pinnedItems(first: 6, types: [REPOSITORY]) {
-            edges {
-              node {
-                ... on Repository {
-                  id
-                  name
-                  description
-                  url
-                  repositoryTopics(first: 10) {
-                    edges {
-                      node {
-                        topic {
-                          name
+    const { data } = await client.query({
+      query: gql`
+        {
+          user(login: "bbardi-dev") {
+            pinnedItems(first: 6, types: [REPOSITORY]) {
+              edges {
+                node {
+                  ... on Repository {
+                    id
+                    name
+                    description
+                    url
+                    repositoryTopics(first: 10) {
+                      edges {
+                        node {
+                          topic {
+                            name
+                          }
                         }
                       }
                     }
+                    homepageUrl
                   }
-                  homepageUrl
                 }
               }
             }
           }
         }
-      }
-    `,
-  });
+      `,
+    });
 
-  let pinnedItems: Project[] = data.user.pinnedItems.edges.map(({ node }: any) => node);
-  pinnedItems = pinnedItems.filter((p) => p.name !== "my-portfolio");
-
+    let pinnedItems: Project[] = data.user.pinnedItems.edges.map(({ node }: any) => node);
+    pinnedItems = pinnedItems.filter((p) => p.name !== "my-portfolio");
+    return {
+      props: {
+        pinnedItems,
+      },
+    };
+  } catch (error) {
+    console.error(error);
+  }
   return {
     props: {
-      pinnedItems,
+      pinnedItems: [],
     },
   };
 }
