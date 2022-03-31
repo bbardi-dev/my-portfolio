@@ -47,7 +47,7 @@ const Home = ({ pinnedItems }: { pinnedItems: Project[] }) => {
   );
 };
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const httpLink = createHttpLink({
     uri: "https://api.github.com/graphql",
   });
