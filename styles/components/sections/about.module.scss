@@ -4,10 +4,6 @@
 @mixin size {
   width: 320px;
   height: 320px;
-  // @include media(">=desktop, <md-desktop") {
-  //   width: 360px;
-  //   height: 360px;
-  // }
   @include media(">=md-desktop") {
     width: 360px;
     height: 360px;
