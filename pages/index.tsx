@@ -70,7 +70,7 @@ export async function getServerSideProps() {
     query: gql`
       {
         user(login: "bbardi-dev") {
-          pinnedItems(first: 6) {
+          pinnedItems(first: 6, types: [REPOSITORY]) {
             edges {
               node {
                 ... on Repository {
