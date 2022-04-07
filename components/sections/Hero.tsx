@@ -5,6 +5,7 @@ import { InView } from "react-intersection-observer";
 import { SetStateAction } from "react";
 import { motion, Variants } from "framer-motion";
 import { Sections } from "../../utils/types";
+import { fadeUp } from "../../utils/animations";
 
 const Hero = ({ setOnScreen }: { setOnScreen: (value: SetStateAction<Sections>) => void }) => {
   const staggeredAnimation: Variants = window.matchMedia("(max-width: 768px)").matches
@@ -24,20 +25,6 @@ const Hero = ({ setOnScreen }: { setOnScreen: (value: SetStateAction<Sections>) 
           },
         },
       };
-  const fadeUp: Variants = {
-    initial: {
-      opacity: 0,
-      y: 12,
-    },
-    animate: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        ease: [0.6, 0.01, -0.05, 0.96],
-        duration: 1,
-      },
-    },
-  };
 
   return (
     <InView as='div' onChange={(inView) => (inView ? setOnScreen("Hero") : null)}>

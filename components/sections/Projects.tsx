@@ -6,6 +6,8 @@ import { InView } from "react-intersection-observer";
 import { SetStateAction } from "react";
 import { Project, Sections } from "../../utils/types";
 import { firstLetterToUppercase } from "../../utils/util";
+import { motion, useAnimation } from "framer-motion";
+import { fadeUp } from "../../utils/animations";
 
 export default function Projects({
   setOnScreen,
@@ -14,22 +16,36 @@ export default function Projects({
   setOnScreen: (value: SetStateAction<Sections>) => void;
   projects: Project[];
 }) {
-  const onViewChange = (inView: boolean) => (inView ? setOnScreen("Projects") : null);
-
+  const controls = useAnimation();
   return (
-    <InView threshold={0.5} as='div' onChange={(inView) => onViewChange(inView)}>
-      <div className={styles.main} id='projects'>
-        <h2>My Projects</h2>
-        <p className={styles.projects_description}>
-          Here you can find some example projects I've worked on, either in a hobby or professional
-          capacity. You can see a live preview and also see the code on Github for more details.
-        </p>
-        <div className={styles.projects_section}>
-          {projects.map((p, i) => (
-            <ProjectCard project={p} key={i} />
-          ))}
-        </div>
-      </div>
+    <InView threshold={0.25} as='div'>
+      {({ inView, ref }) => {
+        if (inView) {
+          setOnScreen("Projects");
+          controls.start("animate");
+        }
+        return (
+          <motion.div
+            initial='initial'
+            animate={controls}
+            variants={fadeUp}
+            ref={ref}
+            className={styles.main}
+            id='projects'
+          >
+            <h2>My Projects</h2>
+            <p className={styles.projects_description}>
+              Here you can find some example projects I've worked on, either in a hobby or professional
+              capacity. You can see a live preview and also see the code on Github for more details.
+            </p>
+            <div className={styles.projects_section}>
+              {projects.map((p, i) => (
+                <ProjectCard project={p} key={i} />
+              ))}
+            </div>
+          </motion.div>
+        );
+      }}
     </InView>
   );
 }
