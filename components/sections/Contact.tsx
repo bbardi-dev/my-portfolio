@@ -191,7 +191,7 @@ export default function ContactForm({
                       <Image src={"/icons/github.svg"} width={48} height={48} />
                     </a>
                   </Link>
-                  <Link href='www.linkedin.com/in/b-bardi'>
+                  <Link href='https://www.linkedin.com/in/b-bardi'>
                     <a target='blank'>
                       <Image src={"/icons/linkedin.svg"} width={48} height={48} />
                     </a>
