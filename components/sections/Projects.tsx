@@ -2,8 +2,8 @@ import Link from "next/link";
 import Image from "next/image";
 import styles from "../../styles/components/sections/projects.module.scss";
 import placeholder from "../../public/placeholder.jpg";
-import { InView } from "react-intersection-observer";
-import { SetStateAction } from "react";
+import { useInView } from "react-intersection-observer";
+import { SetStateAction, useEffect } from "react";
 import { Project, Sections } from "../../utils/types";
 import { firstLetterToUppercase } from "../../utils/util";
 import { motion, useAnimation } from "framer-motion";
@@ -17,36 +17,37 @@ export default function Projects({
   projects: Project[];
 }) {
   const controls = useAnimation();
+  const [ref, isVisisble] = useInView({
+    threshold: 0.25,
+  });
+
+  useEffect(() => {
+    if (isVisisble) {
+      setOnScreen("Projects");
+      controls.start("animate");
+    }
+  }, [isVisisble]);
+
   return (
-    <InView threshold={0.25} as='div'>
-      {({ inView, ref }) => {
-        if (inView) {
-          setOnScreen("Projects");
-          controls.start("animate");
-        }
-        return (
-          <motion.div
-            initial='initial'
-            animate={controls}
-            variants={fadeUp}
-            ref={ref}
-            className={styles.main}
-            id='projects'
-          >
-            <h2>My Projects</h2>
-            <p className={styles.projects_description}>
-              Here you can find some example projects I've worked on, either in a hobby or professional
-              capacity. You can see a live preview and also see the code on Github for more details.
-            </p>
-            <div className={styles.projects_section}>
-              {projects.map((p, i) => (
-                <ProjectCard project={p} key={i} />
-              ))}
-            </div>
-          </motion.div>
-        );
-      }}
-    </InView>
+    <motion.div
+      initial='initial'
+      animate={controls}
+      variants={fadeUp}
+      ref={ref}
+      className={styles.main}
+      id='projects'
+    >
+      <h2>My Projects</h2>
+      <p className={styles.projects_description}>
+        Here you can find some example projects I've worked on, either in a hobby or professional capacity.
+        You can see a live preview and also see the code on Github for more details.
+      </p>
+      <div className={styles.projects_section}>
+        {projects.map((p, i) => (
+          <ProjectCard project={p} key={i} />
+        ))}
+      </div>
+    </motion.div>
   );
 }
 

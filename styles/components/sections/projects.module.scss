@@ -37,6 +37,8 @@
     }
   }
   .projects_description {
+    position: relative;
+    z-index: 19;
     font-size: 1.25rem;
     line-height: 1.75rem;
     @include media(">=lg-phone") {

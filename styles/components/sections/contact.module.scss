@@ -14,6 +14,8 @@
   }
 
   .contact_content {
+    position: relative;
+    z-index: 19;
     @include media(">=desktop") {
       display: flex;
       gap: 4rem;
@@ -36,6 +38,7 @@
             font-weight: 700;
           }
           input {
+            z-index: 99;
             margin-top: 0.5rem;
             padding: 1rem;
             width: 100%;

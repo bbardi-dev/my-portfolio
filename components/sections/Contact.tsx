@@ -1,9 +1,9 @@
 import { motion, useAnimation } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { SetStateAction, useState } from "react";
+import { SetStateAction, useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { InView } from "react-intersection-observer";
+import { useInView } from "react-intersection-observer";
 
 import styles from "../../styles/components/sections/contact.module.scss";
 import { fadeUp } from "../../utils/animations";
@@ -59,154 +59,151 @@ export default function ContactForm({
 
   const controls = useAnimation();
 
+  const [ref, isVisisble] = useInView({
+    threshold: 0.5,
+  });
+
+  useEffect(() => {
+    if (isVisisble) {
+      setOnScreen("Contact");
+      controls.start("animate");
+    }
+  }, [isVisisble]);
+
   return (
-    <InView threshold={0.5} as='div' onChange={(inView) => (inView ? setOnScreen("Contact") : null)}>
-      {({ inView, ref }) => {
-        if (inView) {
-          setOnScreen("Contact");
-          controls.start("animate");
-        }
-        return (
-          <motion.div
-            ref={ref}
-            initial='initial'
-            animate={controls}
-            variants={fadeUp}
-            className={styles.contact}
-            id='contact'
-          >
-            <h2>Contact</h2>
+    <motion.div
+      ref={ref}
+      initial='initial'
+      animate={controls}
+      variants={fadeUp}
+      className={styles.contact}
+      id='contact'
+    >
+      <h2>Contact</h2>
 
-            <div className={styles.contact_content}>
-              <div className={styles.contact_form}>
-                <form onSubmit={handleSubmit(onFormSubmit)}>
-                  <div className={styles.input}>
-                    <label htmlFor='name'>Name</label>
-                    <input
-                      type='text'
-                      {...register("name", {
-                        required: {
-                          value: true,
-                          message: "This field is required",
-                        },
-                        maxLength: {
-                          value: 64,
-                          message: "Is your name really longer than 64 characters? 🤔",
-                        },
-                      })}
-                    />
-                    {errors?.name?.message && (
-                      <span className={styles.error_msg}>{errors?.name?.message}</span>
-                    )}
-                  </div>
-                  <div className={styles.input}>
-                    <label htmlFor='email'>Email</label>
-                    <input
-                      type='text'
-                      {...register("email", {
-                        required: {
-                          value: true,
-                          message: "This field is required",
-                        },
-                        pattern: {
-                          value:
-                            /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-                          message: "Please enter a valid email",
-                        },
-                        maxLength: {
-                          value: 64,
-                          message: "Is your email address really longer than 64 characters? 🤔",
-                        },
-                      })}
-                    />
-                    {errors?.email?.message && (
-                      <span className={styles.error_msg}>{errors?.email?.message}</span>
-                    )}
-                  </div>
-                  <div className={styles.input}>
-                    <label htmlFor='message'>Message</label>
-                    <textarea
-                      rows={12}
-                      {...register("message", {
-                        required: {
-                          value: true,
-                          message: "This field is required",
-                        },
-                        minLength: {
-                          value: 25,
-                          message: "Your message should at least be 25 characters.",
-                        },
-                        maxLength: {
-                          value: 999,
-                          message: "Your message shouldn't be longer than 999 characters.",
-                        },
-                      })}
-                    />
-                    {errors?.message?.message && (
-                      <span className={styles.error_msg}>{errors?.message?.message}</span>
-                    )}
-                  </div>
-                  <button
-                    disabled={submitting}
-                    onSubmit={handleSubmit(onFormSubmit)}
-                    type='submit'
-                    style={
-                      emailStatus === "success"
-                        ? { backgroundColor: "#3FF071" }
-                        : emailStatus === "error"
-                        ? { backgroundColor: "#F03F4A" }
-                        : {}
-                    }
-                  >
-                    {emailStatus === "initial" ? (
-                      <>
-                        <span>Send Email </span> <Image src={"/icons/send_it.svg"} width={40} height={40} />
-                      </>
-                    ) : emailStatus === "success" ? (
-                      <span>Email Sent successfully 😎👍</span>
-                    ) : (
-                      <span>Error, please try again 😥</span>
-                    )}
-                  </button>
-                </form>
-              </div>
+      <div className={styles.contact_content}>
+        <div className={styles.contact_form}>
+          <form onSubmit={handleSubmit(onFormSubmit)}>
+            <div className={styles.input}>
+              <label htmlFor='name'>Name</label>
+              <input
+                type='text'
+                {...register("name", {
+                  required: {
+                    value: true,
+                    message: "This field is required",
+                  },
+                  maxLength: {
+                    value: 64,
+                    message: "Is your name really longer than 64 characters? 🤔",
+                  },
+                })}
+              />
+              {errors?.name?.message && <span className={styles.error_msg}>{errors?.name?.message}</span>}
+            </div>
+            <div className={styles.input}>
+              <label htmlFor='email'>Email</label>
+              <input
+                type='text'
+                {...register("email", {
+                  required: {
+                    value: true,
+                    message: "This field is required",
+                  },
+                  pattern: {
+                    value:
+                      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                    message: "Please enter a valid email",
+                  },
+                  maxLength: {
+                    value: 64,
+                    message: "Is your email address really longer than 64 characters? 🤔",
+                  },
+                })}
+              />
+              {errors?.email?.message && <span className={styles.error_msg}>{errors?.email?.message}</span>}
+            </div>
+            <div className={styles.input}>
+              <label htmlFor='message'>Message</label>
+              <textarea
+                rows={12}
+                {...register("message", {
+                  required: {
+                    value: true,
+                    message: "This field is required",
+                  },
+                  minLength: {
+                    value: 25,
+                    message: "Your message should at least be 25 characters.",
+                  },
+                  maxLength: {
+                    value: 999,
+                    message: "Your message shouldn't be longer than 999 characters.",
+                  },
+                })}
+              />
+              {errors?.message?.message && (
+                <span className={styles.error_msg}>{errors?.message?.message}</span>
+              )}
+            </div>
+            <button
+              disabled={submitting}
+              onSubmit={handleSubmit(onFormSubmit)}
+              type='submit'
+              style={
+                emailStatus === "success"
+                  ? { backgroundColor: "#3FF071" }
+                  : emailStatus === "error"
+                  ? { backgroundColor: "#F03F4A" }
+                  : {}
+              }
+            >
+              {emailStatus === "initial" ? (
+                <>
+                  <span>Send Email </span> <Image src={"/icons/send_it.svg"} width={40} height={40} />
+                </>
+              ) : emailStatus === "success" ? (
+                <span>Email Sent successfully 😎👍</span>
+              ) : (
+                <span>Error, please try again 😥</span>
+              )}
+            </button>
+          </form>
+        </div>
 
-              <div className={styles.contact_info}>
-                <p>
-                  Feel free to get in touch. I'm currently looking for full-time positions, as well as
-                  freelance contract work, but open to all business inquiries. Below are a few more links
-                  where you can find me.
-                </p>
-                <div className={styles.icon_info}>
-                  <Image src={"/icons/email.svg"} width={36} height={36} />
-                  <span>bbardi.dev@gmail.com</span>
-                </div>
-                <div className={styles.icon_info}>
-                  <Image src={"/icons/location.svg"} width={36} height={36} />
-                  <span>Budapest, Remote</span>
-                </div>
-                <div className={styles.socials}>
-                  <Link href='https://www.github.com/bbardi-dev'>
-                    <a target='blank'>
-                      <Image src={"/icons/github.svg"} width={48} height={48} />
-                    </a>
-                  </Link>
-                  <Link href='https://www.linkedin.com/in/b-bardi'>
-                    <a target='blank'>
-                      <Image src={"/icons/linkedin.svg"} width={48} height={48} />
-                    </a>
-                  </Link>
-                  {/* <Link href='https://www.upwork.com'>
+        <div className={styles.contact_info}>
+          <p>
+            Feel free to get in touch. I'm currently looking for full-time positions, as well as freelance
+            contract work, but open to all business inquiries. Below are a few more links where you can find
+            me.
+          </p>
+          <div className={styles.icon_info}>
+            <Image src={"/icons/email.svg"} width={36} height={36} />
+            <span>bbardi.dev@gmail.com</span>
+          </div>
+          <div className={styles.icon_info}>
+            <Image src={"/icons/location.svg"} width={36} height={36} />
+            <span>Budapest, Remote</span>
+          </div>
+          <div className={styles.socials}>
+            <Link href='https://www.github.com/bbardi-dev'>
+              <a target='blank'>
+                <Image src={"/icons/github.svg"} width={48} height={48} />
+              </a>
+            </Link>
+            <Link href='https://www.linkedin.com/in/b-bardi'>
+              <a target='blank'>
+                <Image src={"/icons/linkedin.svg"} width={48} height={48} />
+              </a>
+            </Link>
+            {/* <Link href='https://www.upwork.com'>
                     <a target='blank'>
                       <Image src={"/icons/upwork.svg"} width={48} height={48} />
                     </a>
                   </Link> */}
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        );
-      }}
-    </InView>
+          </div>
+        </div>
+      </div>
+    </motion.div>
   );
 }
