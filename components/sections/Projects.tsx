@@ -79,20 +79,37 @@ function ProjectCard({ project }: { project: Project }) {
           ))}
         </div>
         <div className={styles.project_card_buttons}>
-          <Link href={project.url ?? "/"} passHref>
-            <a className={styles.project_card_button}>
+          <Link href={project.url} passHref>
+            <a target={"_blank"} className={styles.project_card_button}>
               <Image src='/icons/source_code.svg' height={20} width={20} />
               <span>Source Code</span>
             </a>
           </Link>
-          <Link href={project.homepageUrl ?? "/"} passHref>
-            <a className={styles.project_card_button}>
-              <Image src='/icons/live_demo.svg' height={20} width={20} />
-              <span>Live Demo</span>
-            </a>
-          </Link>
+          <LiveDemoButton homepageUrl={project.homepageUrl} />
         </div>
       </div>
     </div>
+  );
+}
+
+function LiveDemoButton({ homepageUrl }: { homepageUrl: string }) {
+  if (homepageUrl.length < 2) {
+    return (
+      <Link href={""}>
+        <a target={"_blank"} className={`${styles.project_card_button} ${styles.button_disabled}`}>
+          <Image src='/icons/live_demo.svg' height={20} width={20} />
+          <span>Unavailable</span>
+        </a>
+      </Link>
+    );
+  }
+
+  return (
+    <Link href={homepageUrl} passHref>
+      <a target={"_blank"} className={styles.project_card_button}>
+        <Image src='/icons/live_demo.svg' height={20} width={20} />
+        <span>Live Demo</span>
+      </a>
+    </Link>
   );
 }

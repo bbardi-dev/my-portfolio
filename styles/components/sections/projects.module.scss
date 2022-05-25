@@ -209,6 +209,10 @@
               }
             }
           }
+          .button_disabled {
+            opacity: 60%;
+            pointer-events: none;
+          }
         }
       }
     }
