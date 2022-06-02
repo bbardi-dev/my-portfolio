@@ -56,8 +56,7 @@ const About = ({ setOnScreen }: { setOnScreen: (value: SetStateAction<Sections>)
             <li>Vue.js</li>
             <li>Node.js / Express.js</li>
             <li>REST APIs</li>
-            <li>Unit testing with Jest</li>
-            <li>E2E testing with Cypress</li>
+            <li>Unit testing, Jest, TDD</li>
           </ul>
         </div>
 
