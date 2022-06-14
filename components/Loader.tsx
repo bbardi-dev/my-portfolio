@@ -6,7 +6,7 @@ const Loader = ({ setLoading }: { setLoading: Dispatch<SetStateAction<boolean>> 
   const container = {
     show: {
       transition: {
-        staggerChildren: 0.4,
+        staggerChildren: 0.3,
       },
     },
   };
@@ -38,6 +38,13 @@ const Loader = ({ setLoading }: { setLoading: Dispatch<SetStateAction<boolean>> 
       y: "-200vh",
     },
   };
+  const item4 = {
+    ...item,
+    hidden: {
+      ...item.hidden,
+      y: "-300vh",
+    },
+  };
 
   return (
     <motion.div
@@ -50,6 +57,7 @@ const Loader = ({ setLoading }: { setLoading: Dispatch<SetStateAction<boolean>> 
       <motion.div variants={item} className={styles.transition_1} />
       <motion.div variants={item2} className={styles.transition_2} />
       <motion.div variants={item3} className={styles.transition_3} />
+      <motion.div variants={item4} className={styles.transition_4} />
     </motion.div>
   );
 };
