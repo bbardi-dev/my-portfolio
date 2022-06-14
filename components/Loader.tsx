@@ -2,15 +2,11 @@ import { motion } from "framer-motion";
 import { Dispatch, SetStateAction } from "react";
 import styles from "../styles/components/loader.module.scss";
 
-const Loader = ({
-  setLoading,
-}: {
-  setLoading: Dispatch<SetStateAction<boolean>>;
-}) => {
+const Loader = ({ setLoading }: { setLoading: Dispatch<SetStateAction<boolean>> }) => {
   const container = {
     show: {
       transition: {
-        staggerChildren: 0.3,
+        staggerChildren: 0.4,
       },
     },
   };

@@ -21,28 +21,24 @@ const Home = ({ pinnedItems }: { pinnedItems: Project[] }) => {
       : document.querySelector("body")?.classList.remove("loading");
   }, [loading]);
 
+  if (loading) return <Loader setLoading={setLoading} />;
+
   return (
     <>
-      {loading ? (
-        <Loader setLoading={setLoading} />
-      ) : (
-        <>
-          <Menu setNavInView={setNavInView} />
-          <SideNav section={sectionOnScreen} navInView={navInView} />
-          <div className='container'>
-            <Hero setOnScreen={setOnScreen} />
-          </div>
-          <div className='container'>
-            <About setOnScreen={setOnScreen} />
-          </div>
-          <div className='container'>
-            <Projects setOnScreen={setOnScreen} projects={pinnedItems} />
-          </div>
-          <div className='container'>
-            <Contact setOnScreen={setOnScreen} />
-          </div>
-        </>
-      )}
+      <Menu setNavInView={setNavInView} />
+      <SideNav section={sectionOnScreen} navInView={navInView} />
+      <div className='container'>
+        <Hero setOnScreen={setOnScreen} />
+      </div>
+      <div className='container'>
+        <About setOnScreen={setOnScreen} />
+      </div>
+      <div className='container'>
+        <Projects setOnScreen={setOnScreen} projects={pinnedItems} />
+      </div>
+      <div className='container'>
+        <Contact setOnScreen={setOnScreen} />
+      </div>
     </>
   );
 };
