@@ -6,7 +6,7 @@ const Loader = ({ setLoading }: { setLoading: Dispatch<SetStateAction<boolean>> 
   const container = {
     show: {
       transition: {
-        staggerChildren: 0.3,
+        staggerChildren: 0.4,
       },
     },
   };
