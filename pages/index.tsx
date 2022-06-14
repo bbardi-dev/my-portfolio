@@ -1,6 +1,6 @@
 import { ApolloClient, createHttpLink, gql, InMemoryCache } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
-import { useState, useEffect, useLayoutEffect } from "react";
+import { useState, useLayoutEffect } from "react";
 import Loader from "../components/Loader";
 import Menu from "../components/Menu";
 import About from "../components/sections/About";
