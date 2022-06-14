@@ -1,6 +1,6 @@
 import { ApolloClient, createHttpLink, gql, InMemoryCache } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useLayoutEffect } from "react";
 import Loader from "../components/Loader";
 import Menu from "../components/Menu";
 import About from "../components/sections/About";
@@ -15,10 +15,13 @@ const Home = ({ pinnedItems }: { pinnedItems: Project[] }) => {
   const [sectionOnScreen, setOnScreen] = useState<Sections>("Hero");
   const [navInView, setNavInView] = useState(true);
 
-  useEffect(() => {
-    loading
-      ? document.querySelector("body")?.classList.add("loading")
-      : document.querySelector("body")?.classList.remove("loading");
+  useLayoutEffect(() => {
+    if (loading) {
+      document.querySelector("body")?.classList.add("loading");
+    } else {
+      document.querySelector("body")?.classList.add("bg-changed");
+      document.querySelector("body")?.classList.remove("loading");
+    }
   }, [loading]);
 
   if (loading) return <Loader setLoading={setLoading} />;
