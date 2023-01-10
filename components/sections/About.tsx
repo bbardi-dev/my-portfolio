@@ -33,7 +33,7 @@ const About = ({ setOnScreen }: { setOnScreen: (value: SetStateAction<Sections>)
       <div className={styles.main_content}>
         <div className={styles.text_content}>
           <p>
-            Hi, my name is Balázs, I'm a <span className={styles.highlighted}>fullstack developer </span>
+            Hi, my name is Balázs, I'm a <span className={styles.highlighted}>fullstack engineer </span>
             with an <span className={styles.highlighted}>eye for design</span>. As a developer I strive to
             <span className={styles.highlighted}> create products</span> that are both
             <span className={styles.highlighted}> beautiful and usable</span>. I have a great
@@ -43,7 +43,6 @@ const About = ({ setOnScreen }: { setOnScreen: (value: SetStateAction<Sections>)
             <span className={styles.highlighted}>code that is fast, clean and maintainable</span>.
           </p>
           <p>
-            I have some experience freelancing and building projects on my own, but currently{" "}
             <span className={styles.highlighted}>I'm looking for a full-time position</span>. If you think
             we'd be a good match, don't hesitate to reach out!
           </p>
@@ -51,11 +50,11 @@ const About = ({ setOnScreen }: { setOnScreen: (value: SetStateAction<Sections>)
           <ul>
             <li>Javascript / Typescript</li>
             <li>React.js / Next.js</li>
-            <li>CSS Frameworks, SCSS</li>
+            <li>TailwindCSS, SCSS</li>
             <li>UI/UX, Figma</li>
-            <li>Vue.js</li>
             <li>Node.js / Express.js</li>
             <li>REST APIs</li>
+            <li>Vue.js</li>
             <li>Unit testing, Jest, TDD</li>
           </ul>
         </div>

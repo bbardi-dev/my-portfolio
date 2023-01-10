@@ -30,11 +30,17 @@
   .text_content {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 1rem;
+    @include media(">=tablet") {
+      gap: 2rem;
+    }
+    @include media(">desktop") {
+      gap: 2rem;
+    }
     width: 100%;
 
     h1 {
-      font-size: 5rem;
+      font-size: 4rem;
       @include media(">desktop") {
         font-size: 6rem;
       }
@@ -43,11 +49,24 @@
     }
 
     p {
-      font-size: 20px;
+      font-size: 1.5rem;
+      margin-top: 0;
+      @include media(">lg-phone") {
+        margin-top: 1rem;
+      }
+      @include media(">desktop") {
+        font-size: 2rem;
+      }
     }
 
     .links {
       display: flex;
+      flex-direction: column;
+      width: 100%;
+      gap: 1rem;
+      @include media(">=lg-phone") {
+        flex-direction: row;
+      }
       a {
         display: flex;
         align-items: center;
@@ -59,7 +78,10 @@
         font-weight: 600;
         letter-spacing: 0.05rem;
         border-radius: 3px;
-        width: 18rem;
+        width: 100%;
+        @include media(">=lg-phone") {
+          width: 18rem;
+        }
         padding: 0.75rem 1.5rem;
         margin-right: 1rem;
         @include btn-effect;
