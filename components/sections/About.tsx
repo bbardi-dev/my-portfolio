@@ -53,7 +53,7 @@ const About = ({ setOnScreen }: { setOnScreen: (value: SetStateAction<Sections>)
             <li>TailwindCSS, SCSS</li>
             <li>UI/UX, Figma</li>
             <li>Node.js / Express.js</li>
-            <li>REST APIs</li>
+            <li>REST and GraphQL APIs</li>
             <li>Vue.js</li>
             <li>Unit testing, Jest, TDD</li>
           </ul>
