@@ -93,7 +93,7 @@ function ProjectCard({ project }: { project: Project }) {
 }
 
 function LiveDemoButton({ homepageUrl }: { homepageUrl: string }) {
-  if (homepageUrl.length < 2) {
+  if (homepageUrl?.length < 2) {
     return (
       <Link href={""}>
         <a target={"_blank"} className={`${styles.project_card_button} ${styles.button_disabled}`}>
